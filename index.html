@@ -373,10 +373,10 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
       <div class="form-title">PROFIEL AANMAKEN</div>
       <div class="form-sub">Gratis · Live binnen 2 minuten</div>
       <div class="fr2">
-        <div class="fg"><label>Voornaam</label><input type="text" id="r-naam" placeholder="Eli" oninput="updPrev()"></div>
-        <div class="fg"><label>Achternaam</label><input type="text" id="r-anaam" placeholder="Bakker" oninput="updPrev()"></div>
+        <div class="fg"><label>Voornaam</label><input type="text" id="r-naam" placeholder="Voornaam" oninput="updPrev()"></div>
+        <div class="fg"><label>Achternaam</label><input type="text" id="r-anaam" placeholder="Achternaam" oninput="updPrev()"></div>
       </div>
-      <div class="fg"><label>Tagline</label><input type="text" id="r-titel" placeholder="Fade Specialist · Amsterdam"></div>
+      <div class="fg"><label>Tagline</label><input type="text" id="r-titel" placeholder="Bijv. Kapper · Amsterdam"></div>
       <div class="fr2">
         <div class="fg"><label>Type kapper</label>
           <select id="r-type"><option value="">— Kies —</option><option value="man">Mannenkapper</option><option value="vrouw">Vrouwenkapper</option><option value="unisex">Unisex</option></select>
@@ -432,7 +432,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
           <input type="password" maxlength="1" id="p3" oninput="nxtP(this,'p4')" inputmode="numeric">
           <input type="password" maxlength="1" id="p4" oninput="chkPin()" inputmode="numeric">
         </div>
-        <p style="font-size:.7rem;color:var(--gray2)">Standaard PIN: <strong style="color:var(--gold)">1234</strong></p>
+        
       </div>
     </div>
     <div id="admin-dash" style="display:none">
@@ -481,7 +481,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
     </div>
     <div class="ft-bottom">
       <span class="ft-copy">© 2025 ZJK.nl — Zoek Je Kapper</span>
-      <span class="ft-made">🛠️ Gebouwd & beheerd door <strong>CutsByEli</strong> — Eli Bakker</span>
+      <span class="ft-made">🛠️ Gebouwd & beheerd door <strong>CutsByEli</strong> — Eliam Taouanza</span>
     </div>
   </div>
 </footer>
@@ -578,7 +578,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
     <div class="fg"><label>Alinea 1</label><textarea id="se-p1" style="height:75px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;resize:vertical;transition:.22s"></textarea></div>
     <div class="fg"><label>Alinea 2</label><textarea id="se-p2" style="height:75px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;resize:vertical;transition:.22s"></textarea></div>
     <div class="fg"><label>Alinea 3</label><textarea id="se-p3" style="height:75px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;resize:vertical;transition:.22s"></textarea></div>
-    <div class="fg"><label>Handtekening</label><input type="text" id="se-sig" placeholder="Eli"></div>
+    <div class="fg"><label>Handtekening</label><input type="text" id="se-sig" placeholder="Eliam"></div>
     <button class="fsub" onclick="saveSt()">✦ OPSLAAN</button>
   </div>
 </div>
@@ -599,16 +599,10 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
 const DB={s:(k,v)=>{try{localStorage.setItem('zjk2_'+k,JSON.stringify(v))}catch(e){}},l:(k,d)=>{try{const r=localStorage.getItem('zjk2_'+k);return r!==null?JSON.parse(r):d}catch(e){return d}}};
 
 // ══════════════ STATE ══════════════
-let barbers=DB.l('barbers',[
-  {id:'b1',naam:'Eli',anaam:'Bakker',titel:'Fade Specialist · Amsterdam',type:'man',stad:'Amsterdam',bio:'Ik ben Eli, 19 jaar. Gespecialiseerd in skin fades, high fades en baard shaping. Scherpe lijnen, altijd op tijd.',services:[{name:'Haircut',price:15},{name:'Skin Fade',price:18},{name:'Baard Trim',price:10},{name:'Combo Deal',price:22}],kleur:'#d4a843',rating:4.9,reviews:34,badge:'Top Kapper',media:[],bookings:[]},
-  {id:'b2',naam:'Naomi',anaam:'Williams',titel:'Vlechtspecialist & Locs · Amsterdam',type:'vrouw',stad:'Amsterdam',bio:'Box braids, cornrows, knotless, locs — 7 jaar ervaring. Jouw beschermende stijl in goede handen.',services:[{name:'Box Braids',price:80},{name:'Cornrows',price:45},{name:'Knotless Braids',price:95},{name:'Loc Starter',price:120},{name:'Loc Retwist',price:60}],kleur:'#a855f7',rating:4.9,reviews:62,badge:'Top Kapper',media:[],bookings:[]},
-  {id:'b3',naam:'Sofia',anaam:'Jansen',titel:'Color & Behandelingen · Rotterdam',type:'vrouw',stad:'Rotterdam',bio:'Fijn en dun haar is mijn specialiteit. Technieken die volume geven. Highlights, balayage, keratine.',services:[{name:'Highlights',price:55},{name:'Balayage',price:85},{name:'Keratine',price:70},{name:'Deep Condition',price:35},{name:'Knipbeurt',price:30}],kleur:'#22d97a',rating:4.8,reviews:47,badge:'',media:[],bookings:[]},
-  {id:'b4',naam:'Jamal',anaam:'Okafor',titel:'Baard Master · Amsterdam',type:'man',stad:'Amsterdam',bio:'Baard is mijn specialiteit. Lijn zetten, shapen, trimmen. Van short beard tot full beard — altijd strak.',services:[{name:'Baard Trim',price:12},{name:'Baard Shaping',price:18},{name:'Skin Fade',price:18},{name:'Combo',price:28}],kleur:'#f0455a',rating:4.7,reviews:29,badge:'',media:[],bookings:[]},
-  {id:'b5',naam:'Yasmine',anaam:'El Amrani',titel:'Curly & Dreads Expert · Utrecht',type:'unisex',stad:'Utrecht',bio:'Krullend haar en dreads zijn mijn passie. Curly girl methode voor perfecte krullen. Dreads starten & retwisten.',services:[{name:'Curly Cut',price:40},{name:'Loc Starter',price:110},{name:'Loc Retwist',price:55},{name:'Twists',price:50}],kleur:'#4a9eff',rating:4.8,reviews:38,badge:'',media:[],bookings:[]}
-]);
+let barbers=DB.l('barbers',[]);
 let bookings=DB.l('bookings',[]);
 let reviews=DB.l('reviews',[]);
-let story=DB.l('story',{p1:'ZJK — Zoek Je Kapper is ontstaan uit een simpele frustratie: je zoekt een kapper die écht goed is, maar je weet niet waar je moet zoeken.',p2:'Of je nou kroeshaar hebt, krullen, vlechten wil of een perfecte fade zoekt — de perfecte kapper vinden was altijd een gok. Totdat ZJK er was.',p3:'Wij geloven dat elke klant recht heeft op de perfecte kapper. En elke kapper verdient het om gevonden te worden door precies de klanten die bij hem of haar passen.',sig:'Eli'});
+let story=DB.l('story',{p1:'ZJK — Zoek Je Kapper is ontstaan uit een simpele frustratie: je zoekt een kapper die écht goed is, maar je weet niet waar je moet zoeken.',p2:'Of je nou kroeshaar hebt, krullen, vlechten wil of een perfecte fade zoekt — de perfecte kapper vinden was altijd een gok. Totdat ZJK er was.',p3:'Wij geloven dat elke klant recht heeft op de perfecte kapper. En elke kapper verdient het om gevonden te worden door precies de klanten die bij hem of haar passen.',sig:'Eliam Taouanza'});
 
 let activeGender='all', activeBrb=null, activeKd=null;
 let selColor='#d4a843', selStar=5, svcList=[], uploadedMedia=[];
@@ -619,7 +613,7 @@ function renderStory(){
   document.getElementById('sp1').textContent=story.p1;
   document.getElementById('sp2').textContent=story.p2;
   document.getElementById('sp3').textContent=story.p3;
-  document.getElementById('s-sig').innerHTML=story.sig+'<small>— Oprichter, ZJK.nl</small>';
+  document.getElementById('s-sig').innerHTML=story.sig+'<small>— Oprichter, ZJK-online.nl</small>';
 }
 function openStoryEdit(){
   document.getElementById('se-p1').value=story.p1;
@@ -666,6 +660,7 @@ function renderBarbers(list){
         <div style="display:flex;gap:.45rem">
           <button class="btn btn-o btn-sm" onclick="openKd('${b.id}')">📊</button>
           <button class="btn btn-o btn-sm" onclick="openReviewModal('${b.id}')">⭐</button>
+          <button class="btn btn-o btn-sm" title="Kopieer boekingslink" onclick="copyBookingLink('${b.id}',event)">🔗</button>
           <button class="btn btn-g btn-sm" onclick="openBk('${b.id}')">📅 Boek</button>
         </div>
       </div>
@@ -918,7 +913,7 @@ function nxtP(el,nid){if(el.value.length===1&&document.getElementById(nid))docum
 function chkPin(){
   const pin=['p1','p2','p3','p4'].map(i=>document.getElementById(i).value).join('');
   if(pin.length!==4)return;
-  if(pin==='1234'){document.getElementById('admin-lock').style.display='none';document.getElementById('admin-dash').style.display='block';renderAdmin()}
+  if(pin==='2006'){document.getElementById('admin-lock').style.display='none';document.getElementById('admin-dash').style.display='block';renderAdmin()}
   else{toast('❌ Verkeerde PIN');['p1','p2','p3','p4'].forEach(i=>document.getElementById(i).value='');document.getElementById('p1').focus()}
 }
 function renderAdmin(){
@@ -975,6 +970,24 @@ function anim(id,target){
 }
 function goTo(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'})}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4200)}
+
+function copyBookingLink(id,e){
+  e.stopPropagation();
+  const b=barbers.find(x=>x.id===id);if(!b)return;
+  const url=window.location.origin+window.location.pathname+'?kapper='+id;
+  navigator.clipboard.writeText(url).then(()=>toast('🔗 Link gekopieerd! Deel dit met klanten.')).catch(()=>{
+    prompt('Kopieer deze link:',url);
+  });
+}
+
+function checkDirectLink(){
+  const params=new URLSearchParams(window.location.search);
+  const kapperId=params.get('kapper');
+  if(kapperId){
+    const b=barbers.find(x=>x.id===kapperId);
+    if(b){setTimeout(()=>{openBk(kapperId);},600);}
+  }
+}
 function toggleNav(){
   const nl=document.querySelector('.navl');
   nl.style.cssText=nl.style.display==='flex'?'':'display:flex;flex-direction:column;position:absolute;top:64px;left:0;width:100%;background:var(--dark);border-bottom:1px solid var(--border);padding:1.4rem 5%;gap:1.1rem;z-index:800';
@@ -982,7 +995,7 @@ function toggleNav(){
 
 // ══════════════ INIT ══════════════
 window.addEventListener('load',()=>{
-  renderStory();doFilter();renderReviews();updStats();
+  renderStory();doFilter();renderReviews();updStats();checkDirectLink();
 });
 </script>
 </body>
