@@ -391,6 +391,15 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
       </div>
       <div class="fg"><label>Over jou</label><textarea id="r-bio" placeholder="Jouw specialiteit, techniek, ervaring..." style="height:80px"></textarea></div>
       <div class="fg">
+        <label>Profielfoto & Werk foto's (max 6)</label>
+        <div class="upload-zone" id="reg-upload-zone" style="margin-top:.4rem">
+          <input type="file" accept="image/*,video/*" multiple onchange="handleRegUpload(event)">
+          <p>📸 Klik of sleep foto's hier naartoe<br><small style="color:var(--gray2)">Kapsels, before/after, jouw werk — JPG, PNG, MP4</small></p>
+        </div>
+        <div class="media-thumbs" id="reg-thumbs"></div>
+        <p style="font-size:.7rem;color:var(--gray2);margin-top:.4rem">💡 Kappers met foto's krijgen 3x meer boekingen</p>
+      </div>
+      <div class="fg">
         <label>Jouw diensten & prijzen (voeg zelf toe)</label>
         <div class="svc-builder">
           <div class="svc-builder-row">
@@ -583,6 +592,15 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
   </div>
 </div>
 
+<!-- GALLERY MODAL -->
+<div class="overlay" id="gallery-ov">
+  <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem;max-width:700px;width:100%;position:relative;max-height:92vh;overflow-y:auto">
+    <button class="modal-x" onclick="closeGallery()">✕</button>
+    <h3 id="gallery-title" style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;margin-bottom:1.2rem"></h3>
+    <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem"></div>
+  </div>
+</div>
+
 <!-- PWA INSTALL BANNER -->
 <div class="pwa-banner" id="pwa-banner">
   <p><strong>📱 Installeer ZJK als App</strong>Voeg toe aan je homescreen voor snel toegang</p>
@@ -642,8 +660,10 @@ function renderBarbers(list){
     const rvCount=reviews.filter(x=>x.barberId===b.id).length;
     return`<div class="bc">
       <div class="bc-media" style="${(!b.media||!b.media.length)?'font-size:3.5rem':''}">
-        ${b.media&&b.media.length?`<img src="${b.media[0]}" alt="kapsel">`:'💈'}
-        ${b.media&&b.media.length>1?`<div class="bc-media-count">+${b.media.length} foto's</div>`:''}
+        ${b.media&&b.media.length?`
+          <img src="${b.media[0]}" alt="kapsel" style="cursor:pointer" onclick="event.stopPropagation();openGallery('${b.id}')">
+          ${b.media.length>1?`<div class="bc-media-count" onclick="event.stopPropagation();openGallery('${b.id}')" style="cursor:pointer">📸 ${b.media.length} foto's bekijken</div>`:''}
+        `:'💈'}
         <div class="bc-type ${tc}">${tl}</div>
       </div>
       <div class="bc-top">
@@ -823,6 +843,23 @@ function renderThumbs(){
 }
 function delThumb(i){uploadedMedia.splice(i,1);renderThumbs()}
 
+// Registration photo upload
+let regMedia=[];
+function handleRegUpload(e){
+  [...e.target.files].slice(0,6-regMedia.length).forEach(f=>{
+    if(regMedia.length>=6){toast('❌ Maximum 6 foto\'s');return}
+    const rd=new FileReader();
+    rd.onload=ev=>{regMedia.push(ev.target.result);renderRegThumbs()};
+    rd.readAsDataURL(f);
+  });
+}
+function renderRegThumbs(){
+  const c=document.getElementById('reg-thumbs');if(!c)return;
+  c.innerHTML=regMedia.map((s,i)=>`<div class="m-thumb"><img src="${s}" alt=""><div class="m-del" onclick="delRegThumb(${i})">✕</div></div>`).join('');
+  document.getElementById('reg-upload-zone').querySelector('p').innerHTML=regMedia.length>=6?'✅ Maximum bereikt (6 foto\'s)':'📸 Nog ${6-regMedia.length} foto\'s toevoegen';
+}
+function delRegThumb(i){regMedia.splice(i,1);renderRegThumbs()}
+
 async function genContent(){
   if(!activeKd)return;
   const out=document.getElementById('content-out');
@@ -899,11 +936,11 @@ function doRegister(){
   const bio=document.getElementById('r-bio').value.trim();
   if(!naam||!type||!stad||!bio){toast('❌ Vul naam, type, stad en bio in.');return}
   if(!regSvcs.length){toast('❌ Voeg minimaal 1 dienst toe.');return}
-  const nb={id:'b'+Date.now(),naam,anaam:document.getElementById('r-anaam').value,titel:document.getElementById('r-titel').value||naam+' · '+stad,type,stad,bio,services:regSvcs,kleur:selColor,tel:document.getElementById('r-tel').value,insta:document.getElementById('r-insta').value,rating:5.0,reviews:0,badge:'Nieuw',media:[],bookings:[]};
+  const nb={id:'b'+Date.now(),naam,anaam:document.getElementById('r-anaam').value,titel:document.getElementById('r-titel').value||naam+' · '+stad,type,stad,bio,services:regSvcs,kleur:selColor,tel:document.getElementById('r-tel').value,insta:document.getElementById('r-insta').value,rating:5.0,reviews:0,badge:'Nieuw',media:[...regMedia],bookings:[]};
   barbers.push(nb);DB.s('barbers',barbers);regSvcs=[];renderSvcList();
   doFilter();updStats();renderReviews();
   toast(`🎉 ${naam} staat nu live op ZJK!`);
-  ['r-naam','r-anaam','r-titel','r-tel','r-insta','r-bio'].forEach(id=>document.getElementById(id).value='');
+  ['r-naam','r-anaam','r-titel','r-tel','r-insta','r-bio'].forEach(id=>document.getElementById(id).value='');regMedia=[];renderRegThumbs();
   document.getElementById('r-type').value='';document.getElementById('r-stad').value='';
   goTo('#zoeken');
 }
@@ -969,6 +1006,24 @@ function anim(id,target){
   const t=setInterval(()=>{c=Math.min(c+inc,target);el.textContent=c;if(c>=target)clearInterval(t)},35);
 }
 function goTo(sel){document.querySelector(sel)?.scrollIntoView({behavior:'smooth'})}
+
+function openGallery(id){
+  const b=barbers.find(x=>x.id===id);if(!b||!b.media||!b.media.length)return;
+  document.getElementById('gallery-title').textContent=b.naam+' '+b.anaam+' — Werk foto\'s';
+  document.getElementById('gallery-grid').innerHTML=b.media.map((src,i)=>`
+    <div style="aspect-ratio:1;overflow:hidden;background:var(--card2);cursor:pointer" onclick="openFullImg('${src}')">
+      <img src="${src}" style="width:100%;height:100%;object-fit:cover;transition:.3s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+    </div>`).join('');
+  document.getElementById('gallery-ov').classList.add('open');
+}
+function closeGallery(){document.getElementById('gallery-ov').classList.remove('open')}
+function openFullImg(src){
+  const ov=document.createElement('div');
+  ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;display:flex;align-items:center;justify-content:center;cursor:pointer';
+  ov.innerHTML=`<img src="${src}" style="max-width:95vw;max-height:95vh;object-fit:contain">`;
+  ov.onclick=()=>document.body.removeChild(ov);
+  document.body.appendChild(ov);
+}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4200)}
 
 function copyBookingLink(id,e){
