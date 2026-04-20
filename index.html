@@ -1448,23 +1448,29 @@ function saveBloks(barberId,bloks){
 
 function renderAgenda(barberId){
   const agenda=getAgenda(barberId);
-  const el=document.getElementById('kd-agenda');if(!el)return;
-  el.innerHTML=DAGEN.map((dag,i)=>{
+  const el=document.getElementById('kd-agenda');
+  if(!el)return;
+  const rows=DAGEN.map(function(dag,i){
     const key=DAGEN_SHORT[i];
     const d=agenda[key]||{open:false,van:'09:00',tot:'18:00'};
-    const chk=d.open?'checked':'';
     const opac=d.open?'':'opacity:.35;pointer-events:none';
-    return '<div class="dag-row">'
-      +'<span class="dag-naam">'+dag+'</span>'
-      +'<label class="dag-toggle"><input type="checkbox" id="dag-'+key+'" '+chk+' onchange="toggleDag(''+key+'')"><span class="dag-slider"></span></label>'
-      +'<div class="dag-times" id="dag-times-'+key+'" style="'+opac+'">'
-      +'<input type="time" id="dag-van-'+key+'" value="'+d.van+'">'
-      +'<span>tot</span>'
-      +'<input type="time" id="dag-tot-'+key+'" value="'+d.tot+'">'
-      +'</div></div>';
-  }).join('');
+    const chkd=d.open?'checked':'';
+    return [
+      '<div class="dag-row">',
+      '<span class="dag-naam">'+dag+'</span>',
+      '<label class="dag-toggle">',
+      '<input type="checkbox" id="dag-'+key+'" '+chkd+' onchange="toggleDag(\''+key+'\')">',
+      '<span class="dag-slider"></span>',
+      '</label>',
+      '<div class="dag-times" id="dag-times-'+key+'" style="'+opac+'">',
+      '<input type="time" id="dag-van-'+key+'" value="'+d.van+'">',
+      '<span>tot</span>',
+      '<input type="time" id="dag-tot-'+key+'" value="'+d.tot+'">',
+      '</div></div>'
+    ].join('');
+  });
+  el.innerHTML=rows.join('');
 }
-
 function toggleDag(key){
   const open=document.getElementById('dag-'+key).checked;
   const times=document.getElementById('dag-times-'+key);
