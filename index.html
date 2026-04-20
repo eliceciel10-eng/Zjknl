@@ -462,6 +462,10 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
             <div id="adm-fin"></div>
           </div>
           <div class="dash-card" style="margin-bottom:1.1rem">
+            <h3>📅 LAATSTE BOEKINGEN</h3>
+            <div id="adm-bookings"></div>
+          </div>
+          <div class="dash-card" style="margin-bottom:1.1rem">
             <h3>✏️ VERHAAL BEWERKEN</h3>
             <p style="font-size:.78rem;color:var(--gray);margin-bottom:.9rem">Pas het verhaal op de homepage aan.</p>
             <button class="btn btn-g btn-sm" style="width:100%;justify-content:center" onclick="openStoryEdit()">✏️ Verhaal Aanpassen</button>
@@ -1026,18 +1030,39 @@ function renderAdmin(){
   document.getElementById('adm-b').textContent=bookings.length;
   document.getElementById('adm-rev').textContent='€'+totR;
   document.getElementById('adm-rv').textContent=reviews.length;
-  document.getElementById('adm-klist').innerHTML=barbers.map(b=>{
+  document.getElementById('adm-klist').innerHTML=barbers.length?barbers.map(b=>{
     const rev=bookings.filter(x=>x.barberId===b.id).reduce((s,x)=>s+(x.prijs||0),0);
     const ini=(b.naam[0]+(b.anaam?b.anaam[0]:'')).toUpperCase();
     const rvCnt=reviews.filter(x=>x.barberId===b.id).length;
-    return`<div class="kpr-row"><div class="av-sm" style="background:${b.kleur}">${ini}</div><div style="flex:1"><div style="font-weight:600;font-size:.82rem">${b.naam} ${b.anaam}</div><div style="font-size:.7rem;color:var(--gray)">${b.stad} · ${rvCnt} reviews</div></div><div style="color:var(--gold);font-family:'Bebas Neue',sans-serif;font-size:1.1rem">€${rev}</div></div>`;
-  }).join('');
+    const bkCnt=bookings.filter(x=>x.barberId===b.id).length;
+    const typeLbl=b.type==='man'?'Mannenkapper':b.type==='vrouw'?'Vrouwenkapper':'Unisex';
+    return`<div class="kpr-row" style="flex-wrap:wrap;gap:.5rem">
+      <div class="av-sm" style="background:${b.kleur}">${ini}</div>
+      <div style="flex:1;min-width:120px">
+        <div style="font-weight:600;font-size:.82rem">${b.naam} ${b.anaam}</div>
+        <div style="font-size:.68rem;color:var(--gray)">${b.stad} · ${typeLbl}</div>
+        <div style="font-size:.68rem;color:var(--gray2)">${bkCnt} boekingen · ${rvCnt} reviews · €${rev}</div>
+      </div>
+      <div style="display:flex;gap:.4rem;flex-shrink:0">
+        <button class="btn btn-o btn-sm" onclick="adminEditBadge('${b.id}')" title="Badge aanpassen">🏷️</button>
+        <button class="btn btn-o btn-sm" onclick="openKd('${b.id}')" title="Dashboard bekijken">📊</button>
+        <button class="btn btn-sm" style="background:rgba(240,69,90,.15);color:var(--red);border:1px solid rgba(240,69,90,.3)" onclick="adminDelete('${b.id}','${b.naam} ${b.anaam}')" title="Verwijderen">🗑️</button>
+      </div>
+    </div>`;
+  }).join(''):'<p style="color:var(--gray);font-size:.82rem;padding:.5rem 0">Nog geen kappers geregistreerd.</p>';
   const totBtw=+(totR*0.21).toFixed(2);
   document.getElementById('adm-fin').innerHTML=`
     <div class="fin-row"><span class="fl">Platform omzet</span><span class="fr gold">€${totR}</span></div>
     <div class="fin-row"><span class="fl">Kappers actief</span><span class="fr">${barbers.length}</span></div>
     <div class="fin-row"><span class="fl">Reviews geplaatst</span><span class="fr">${reviews.length}</span></div>
+    <div class="fin-row"><span class="fl">Totale boekingen</span><span class="fr">${bookings.length}</span></div>
     <div class="fin-row"><span class="fl">Gem. boekingen/kapper</span><span class="fr">${barbers.length?(bookings.length/barbers.length).toFixed(1):0}</span></div>`;
+  // Render last bookings
+  const bkEl=document.getElementById('adm-bookings');
+  if(bkEl){
+    if(!bookings.length){bkEl.innerHTML='<p style="color:var(--gray);font-size:.8rem">Nog geen boekingen.</p>';}
+    else{bkEl.innerHTML='<div style="overflow-x:auto"><table class="bk-table"><thead><tr><th>Klant</th><th>Kapper</th><th>Dienst</th><th>Datum</th><th>Actie</th></tr></thead><tbody>'+bookings.slice(-8).reverse().map(b=>`<tr><td>${b.naam} ${b.anaam}</td><td>${b.barberNaam}</td><td>${b.dienst}</td><td>${b.datum||'—'}</td><td><button class="btn btn-sm" style="background:rgba(240,69,90,.15);color:var(--red);border:1px solid rgba(240,69,90,.3);font-size:.6rem" onclick="adminDeleteBooking('${b.id}')">🗑️</button></td></tr>`).join('')+'</tbody></table></div>';}
+  }
 }
 async function genAdminAI(){
   const out=document.getElementById('adm-ai');
@@ -1062,6 +1087,56 @@ function installPWA(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.
 function dismissPWA(){document.getElementById('pwa-banner').classList.remove('show')}
 
 // ══════════════ UTILS ══════════════
+function adminDeleteBooking(id){
+  if(!confirm('Weet je zeker dat je deze boeking wil verwijderen?')) return;
+  bookings=bookings.filter(x=>x.id!==id);
+  DB.s('bookings',bookings);
+  renderAdmin();
+  updStats();
+  toast('🗑️ Boeking verwijderd.');
+}
+
+function adminDelete(id, naam){
+  if(!confirm(`Weet je zeker dat je ${naam} wil verwijderen?
+
+Alle boekingen en reviews van deze kapper worden ook verwijderd.`)) return;
+  barbers = barbers.filter(x=>x.id!==id);
+  bookings = bookings.filter(x=>x.barberId!==id);
+  reviews = reviews.filter(x=>x.barberId!==id);
+  DB.s('barbers',barbers);
+  DB.s('bookings',bookings);
+  DB.s('reviews',reviews);
+  doFilter();
+  renderAdmin();
+  renderReviews();
+  updStats();
+  toast(`🗑️ ${naam} is verwijderd.`);
+}
+
+function adminEditBadge(id){
+  const b=barbers.find(x=>x.id===id);if(!b)return;
+  const huidig=b.badge||'';
+  const nieuw=prompt(`Badge voor ${b.naam} ${b.anaam}:
+(Leeg laten = geen badge)
+
+Voorbeelden: Top Kapper, Nieuw, Aanbevolen, Oprichter`,huidig);
+  if(nieuw===null)return;
+  b.badge=nieuw.trim();
+  DB.s('barbers',barbers);
+  doFilter();
+  renderAdmin();
+  toast(`✅ Badge van ${b.naam} aangepast!`);
+}
+
+function adminToggleFeature(id){
+  const b=barbers.find(x=>x.id===id);if(!b)return;
+  b.featured=!b.featured;
+  DB.s('barbers',barbers);
+  doFilter();
+  renderAdmin();
+  toast(`${b.featured?'⭐ '+b.naam+' staat bovenaan':'📌 '+b.naam+' is niet meer uitgelicht'}`);
+}
+
 function updStats(){
   anim('hs-k',barbers.length);anim('hs-b',bookings.length);anim('hs-r',reviews.length);
   anim('sv-k',barbers.length);anim('sv-b',bookings.length);anim('sv-r',reviews.length);
