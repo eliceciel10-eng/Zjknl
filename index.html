@@ -242,6 +242,32 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--gold);color:#000;padding:.85rem 1.3rem;font-weight:700;font-size:.77rem;letter-spacing:1px;z-index:9999;transform:translateY(150%);transition:.4s cubic-bezier(.34,1.56,.64,1);max-width:280px;line-height:1.5}
 .toast.show{transform:translateY(0)}
 
+/* AGENDA */
+.agenda-wrap{margin-bottom:1.2rem}
+.dag-row{display:flex;align-items:center;gap:.8rem;padding:.6rem 0;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.dag-row:last-child{border:none}
+.dag-naam{font-size:.78rem;font-weight:600;width:90px;flex-shrink:0}
+.dag-toggle{position:relative;width:40px;height:22px;flex-shrink:0}
+.dag-toggle input{opacity:0;width:0;height:0}
+.dag-slider{position:absolute;inset:0;background:var(--border2);cursor:pointer;transition:.3s;border-radius:22px}
+.dag-slider:before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:var(--gray);transition:.3s;border-radius:50%}
+.dag-toggle input:checked+.dag-slider{background:var(--gold)}
+.dag-toggle input:checked+.dag-slider:before{transform:translateX(18px);background:#000}
+.dag-times{display:flex;align-items:center;gap:.5rem;flex:1;flex-wrap:wrap}
+.dag-times input{background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.35rem .6rem;font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;width:90px;transition:.2s}
+.dag-times input:focus{border-color:var(--gold)}
+.dag-times span{font-size:.72rem;color:var(--gray)}
+.block-row{display:flex;align-items:center;gap:.6rem;padding:.5rem;background:var(--dark);border:1px solid var(--border);margin-bottom:.4rem;flex-wrap:wrap}
+.block-row span{font-size:.76rem;flex:1;color:var(--white)}
+.block-del{background:none;border:none;color:var(--red);cursor:pointer;font-size:.9rem;padding:0}
+.slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:.4rem;margin-top:.8rem}
+.slot{padding:.4rem .3rem;text-align:center;font-size:.72rem;border:1px solid var(--border);cursor:pointer;transition:.2s;color:var(--gray)}
+.slot:hover{border-color:var(--gold);color:var(--gold)}
+.slot.blocked{background:rgba(240,69,90,.1);border-color:rgba(240,69,90,.3);color:var(--red);cursor:default}
+.slot.selected{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
+.herhaling-box{background:rgba(212,168,67,.05);border:1px solid rgba(212,168,67,.2);padding:1rem;margin-top:.8rem}
+.herhaling-box h5{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+
 /* LOGIN */
 .login-wrap{max-width:420px;margin:0 auto}
 .login-tabs{display:flex;gap:0;margin-bottom:1.5rem;border:1px solid var(--border)}
@@ -544,11 +570,36 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
     </div>
     <div class="fr2">
       <div class="fg"><label>Dienst*</label><select id="bk-dienst"><option value="">— Kies —</option></select></div>
-      <div class="fg"><label>Datum*</label><input type="date" id="bk-datum"></div>
+      <div class="fg"><label>Datum*</label><input type="date" id="bk-datum" onchange="loadSlots()"></div>
     </div>
     <div class="fr2">
-      <div class="fg"><label>Tijd*</label><select id="bk-tijd"><option value="">— Kies —</option><option>09:00</option><option>09:30</option><option>10:00</option><option>10:30</option><option>11:00</option><option>12:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option><option>18:00</option><option>19:00</option><option>19:30</option></select></div>
       <div class="fg"><label>Leeftijd</label><select id="bk-lft"><option value="">— Kies —</option><option>Under 13</option><option>13-17</option><option>18-25</option><option>26-35</option><option>36-45</option><option>46+</option></select></div>
+    </div>
+    <div class="fg">
+      <label>Beschikbare tijden*</label>
+      <div id="bk-slots" style="margin-top:.4rem"><p style="font-size:.78rem;color:var(--gray)">Kies eerst een datum om beschikbare tijden te zien.</p></div>
+      <input type="hidden" id="bk-tijd">
+    </div>
+    <div class="herhaling-box">
+      <h5>🔄 VASTE AFSPRAAK / HERHALING</h5>
+      <div class="fr2" style="margin-bottom:.6rem">
+        <div class="fg" style="margin-bottom:0"><label>Herhalen?</label>
+          <select id="bk-herhaal" onchange="toggleHerhaling()">
+            <option value="">Eenmalig (standaard)</option>
+            <option value="weekly">Wekelijks (zelfde dag & tijd)</option>
+            <option value="biweekly">Elke 2 weken</option>
+            <option value="monthly">Maandelijks</option>
+          </select>
+        </div>
+        <div class="fg" style="margin-bottom:0" id="herhaal-aantal-wrap" style="display:none">
+          <label>Aantal keer</label>
+          <select id="bk-herhaal-n">
+            <option value="4">4x</option><option value="8">8x</option>
+            <option value="12">12x</option><option value="24">24x</option>
+          </select>
+        </div>
+      </div>
+      <p id="herhaal-info" style="font-size:.72rem;color:var(--gray2);display:none"></p>
     </div>
     <div class="fg"><label>Extra wensen</label><textarea id="bk-note" placeholder="Specifieke stijl, kleur, referentie..." style="height:65px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;resize:none;transition:.22s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
     <div class="ck-row"><input type="checkbox" id="bk-promo" checked><label for="bk-promo">Ja, ik ontvang graag aanbiedingen van deze kapper.</label></div>
@@ -586,6 +637,25 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
       <div class="k-kpi"><div class="k-kpi-n" id="kd-rev">€0</div><div class="k-kpi-l">Totale omzet</div></div>
       <div class="k-kpi"><div class="k-kpi-n" id="kd-mnd">€0</div><div class="k-kpi-l">Deze maand</div></div>
     </div>
+    <!-- AGENDA INSTELLINGEN -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>📅 AGENDA & OPENINGSTIJDEN</h3>
+      <p style="font-size:.76rem;color:var(--gray);margin-bottom:1rem">Stel in wanneer klanten kunnen boeken. Zet dagen aan/uit en blokkeer specifieke tijden.</p>
+      
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem">Openingstijden per dag</div>
+      <div class="agenda-wrap" id="kd-agenda"></div>
+      <button class="btn btn-g btn-sm" style="margin-top:.6rem" onclick="saveAgenda()">💾 Openingstijden Opslaan</button>
+
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:1.2rem 0 .6rem">Tijden Blokkeren (pauze / vrij)</div>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.6rem">
+        <input type="date" id="blok-datum" style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;flex:1;min-width:130px">
+        <input type="time" id="blok-van" style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;width:100px">
+        <input type="time" id="blok-tot" style="background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:'DM Sans',sans-serif;font-size:.8rem;outline:none;width:100px">
+        <button class="btn btn-g btn-sm" onclick="addBlok()">+ Blokkeer</button>
+      </div>
+      <div id="blok-list"></div>
+    </div>
+
     <div class="content-box">
       <h4>🎬 DAGELIJKSE CONTENT GENERATOR</h4>
       <p style="font-size:.76rem;color:var(--gray);margin-bottom:.9rem">Upload foto's van kapsels van vandaag. Wij genereren een content script voor Instagram, TikTok & WhatsApp.</p>
@@ -898,11 +968,34 @@ function submitBk(){
   if(!naam||!anaam||!tel||!dienst||!datum||!tijd){toast('❌ Vul alle verplichte velden in.');return}
   if(!document.getElementById('bk-akk').checked){toast('❌ Ga akkoord met de voorwaarden.');return}
   const bk={id:'bk'+Date.now(),barberId:activeBrb.id,barberNaam:activeBrb.naam+' '+activeBrb.anaam,naam,anaam,tel,email:document.getElementById('bk-email').value,dienst,prijs,datum,tijd,leeftijd:document.getElementById('bk-lft').value,note:document.getElementById('bk-note').value,promo:document.getElementById('bk-promo').checked,ts:new Date().toISOString()};
-  bookings.push(bk);DB.s('bookings',bookings);
+  const herhaalt=document.getElementById('bk-herhaal').value;
+  const herhaaltN=parseInt(document.getElementById('bk-herhaal-n')?.value)||4;
+  const allBks=[bk];
+  
+  // Generate recurring bookings
+  if(herhaalt&&bk.datum){
+    const d=new Date(bk.datum);
+    for(let i=1;i<herhaaltN;i++){
+      const nd=new Date(d);
+      if(herhaalt==='weekly')nd.setDate(nd.getDate()+7*i);
+      else if(herhaalt==='biweekly')nd.setDate(nd.getDate()+14*i);
+      else if(herhaalt==='monthly')nd.setMonth(nd.getMonth()+i);
+      const nbk={...bk,id:'bk'+Date.now()+i,datum:nd.toISOString().split('T')[0],herhaling:true,herhalingNr:i+1,herhalingTotaal:herhaaltN};
+      allBks.push(nbk);
+    }
+  }
+  
+  allBks.forEach(b=>{bookings.push(b);});
+  DB.s('bookings',bookings);
   const br=barbers.find(x=>x.id===activeBrb.id);
-  if(br){br.bookings=br.bookings||[];br.bookings.push(bk);DB.s('barbers',barbers)}
+  if(br){br.bookings=br.bookings||[];allBks.forEach(b=>br.bookings.push(b));DB.s('barbers',barbers)}
   closeBk();updStats();doFilter();
-  toast(`✅ Afspraak bij ${activeBrb.naam} bevestigd!`);
+  
+  if(allBks.length>1){
+    toast(`✅ ${allBks.length} afspraken gepland bij ${activeBrb.naam}! Eerste: ${bk.datum} om ${bk.tijd}`);
+  } else {
+    toast(`✅ Afspraak bij ${activeBrb.naam} bevestigd op ${bk.datum} om ${bk.tijd}!`);
+  }
 }
 
 // ══════════════ KAPPER DASHBOARD ══════════════
@@ -929,6 +1022,8 @@ function openKd(id){
   renderKdBk(bks);
   renderKdRv(id);
   renderThumbs();
+  renderAgenda(id);
+  renderBloks(id);
   document.getElementById('content-out').textContent='Jouw content script verschijnt hier...';
   document.getElementById('kd-maand').style.display='none';
   document.getElementById('kd-ov').classList.add('open');
@@ -958,7 +1053,16 @@ function renderKdFin(mndR,totR){
 function renderKdBk(bks){
   const tb=document.getElementById('kd-bk-body');
   if(!bks.length){tb.innerHTML='<tr><td colspan="5" style="color:var(--gray);padding:1rem;text-align:center">Nog geen afspraken</td></tr>';return}
-  tb.innerHTML=bks.slice(-10).reverse().map(b=>`<tr><td>${b.naam} ${b.anaam}</td><td>${b.dienst}</td><td>${b.datum||'—'}</td><td>${b.tijd||'—'}</td><td><span class="badge badge-g">Bevestigd</span></td></tr>`).join('');
+  tb.innerHTML=bks.slice(-20).reverse().map(b=>`<tr>
+    <td>${b.naam} ${b.anaam}</td>
+    <td>${b.dienst}</td>
+    <td>${b.datum||'—'}${b.herhaling?'<span class="badge badge-gold" style="margin-left:.3rem">🔄</span>':''}</td>
+    <td>${b.tijd||'—'}</td>
+    <td>
+      <span class="badge badge-g">Bevestigd</span>
+      <button class="btn btn-sm" style="background:rgba(240,69,90,.1);color:var(--red);border:1px solid rgba(240,69,90,.3);font-size:.58rem;margin-left:.3rem" onclick="cancelBk('${b.id}')">Annuleer</button>
+    </td>
+  </tr>`).join('');
 }
 
 function renderKdRv(barberId){
@@ -1171,6 +1275,15 @@ function installPWA(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.
 function dismissPWA(){document.getElementById('pwa-banner').classList.remove('show')}
 
 // ══════════════ UTILS ══════════════
+function cancelBk(id){
+  if(!confirm('Weet je zeker dat je deze afspraak wil annuleren?\n\nDe klant wordt niet automatisch geïnformeerd — stuur zelf even een berichtje!'))return;
+  bookings=bookings.filter(x=>x.id!==id);
+  DB.s('bookings',bookings);
+  if(activeKd)renderKdBk(bookings.filter(x=>x.barberId===activeKd.id));
+  updStats();
+  toast('🗑️ Afspraak geannuleerd. Vergeet de klant niet te informeren!');
+}
+
 function adminDeleteBooking(id){
   if(!confirm('Weet je zeker dat je deze boeking wil verwijderen?')) return;
   bookings=bookings.filter(x=>x.id!==id);
@@ -1298,6 +1411,182 @@ function toggleNav(){
 }
 
 // ══════════════ INIT ══════════════
+// ══════════════ AGENDA SYSTEEM ══════════════
+const DAGEN=['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Zondag'];
+const DAGEN_SHORT=['ma','di','wo','do','vr','za','zo'];
+
+const DEFAULT_AGENDA={
+  ma:{open:true,van:'09:00',tot:'18:00'},
+  di:{open:true,van:'09:00',tot:'18:00'},
+  wo:{open:true,van:'09:00',tot:'18:00'},
+  do:{open:true,van:'09:00',tot:'18:00'},
+  vr:{open:true,van:'09:00',tot:'18:00'},
+  za:{open:true,van:'09:00',tot:'17:00'},
+  zo:{open:false,van:'10:00',tot:'15:00'}
+};
+
+function getAgenda(barberId){
+  const all=DB.l('agendas',{});
+  return all[barberId]||JSON.parse(JSON.stringify(DEFAULT_AGENDA));
+}
+function saveAgendaFor(barberId,agenda){
+  const all=DB.l('agendas',{});
+  all[barberId]=agenda;DB.s('agendas',all);
+}
+function getBloks(barberId){
+  const all=DB.l('bloks',{});
+  return all[barberId]||[];
+}
+function saveBloks(barberId,bloks){
+  const all=DB.l('bloks',{});
+  all[barberId]=bloks;DB.s('bloks',all);
+}
+
+function renderAgenda(barberId){
+  const agenda=getAgenda(barberId);
+  const el=document.getElementById('kd-agenda');if(!el)return;
+  el.innerHTML=DAGEN.map((dag,i)=>{
+    const key=DAGEN_SHORT[i];
+    const d=agenda[key]||{open:false,van:'09:00',tot:'18:00'};
+    return`<div class="dag-row">
+      <span class="dag-naam">${dag}</span>
+      <label class="dag-toggle"><input type="checkbox" id="dag-${key}" ${d.open?'checked':''} onchange="toggleDag('${key}')"><span class="dag-slider"></span></label>
+      <div class="dag-times" id="dag-times-${key}" style="${d.open?'':'opacity:.35;pointer-events:none'}">
+        <input type="time" id="dag-van-${key}" value="${d.van}">
+        <span>tot</span>
+        <input type="time" id="dag-tot-${key}" value="${d.tot}">
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleDag(key){
+  const open=document.getElementById('dag-'+key).checked;
+  const times=document.getElementById('dag-times-'+key);
+  if(times){times.style.opacity=open?'1':'0.35';times.style.pointerEvents=open?'auto':'none';}
+}
+
+function saveAgenda(){
+  if(!currentUser)return;
+  const agenda={};
+  DAGEN_SHORT.forEach(key=>{
+    const cb=document.getElementById('dag-'+key);
+    const van=document.getElementById('dag-van-'+key);
+    const tot=document.getElementById('dag-tot-'+key);
+    if(cb)agenda[key]={open:cb.checked,van:van?van.value:'09:00',tot:tot?tot.value:'18:00'};
+  });
+  saveAgendaFor(currentUser.barberId,agenda);
+  toast('✅ Openingstijden opgeslagen!');
+}
+
+function renderBloks(barberId){
+  const bloks=getBloks(barberId);
+  const el=document.getElementById('blok-list');if(!el)return;
+  if(!bloks.length){el.innerHTML='<p style="font-size:.75rem;color:var(--gray2)">Geen geblokkeerde tijden.</p>';return;}
+  el.innerHTML=bloks.map((b,i)=>`<div class="block-row"><span>🚫 ${b.datum} · ${b.van}–${b.tot}</span><button class="block-del" onclick="delBlok(${i})">✕</button></div>`).join('');
+}
+
+function addBlok(){
+  if(!currentUser)return;
+  const datum=document.getElementById('blok-datum').value;
+  const van=document.getElementById('blok-van').value;
+  const tot=document.getElementById('blok-tot').value;
+  if(!datum||!van||!tot){toast('❌ Vul datum, van en tot in.');return}
+  if(van>=tot){toast('❌ Eindtijd moet na begintijd zijn.');return}
+  const bloks=getBloks(currentUser.barberId);
+  bloks.push({datum,van,tot});
+  saveBloks(currentUser.barberId,bloks);
+  renderBloks(currentUser.barberId);
+  document.getElementById('blok-datum').value='';
+  document.getElementById('blok-van').value='';
+  document.getElementById('blok-tot').value='';
+  toast('✅ Tijd geblokkeerd!');
+}
+
+function delBlok(i){
+  if(!currentUser)return;
+  const bloks=getBloks(currentUser.barberId);
+  bloks.splice(i,1);
+  saveBloks(currentUser.barberId,bloks);
+  renderBloks(currentUser.barberId);
+  toast('🗑️ Blokkade verwijderd.');
+}
+
+// Generate time slots between from/to in 30min intervals
+function genSlots(van,tot){
+  const slots=[];
+  let [h,m]=van.split(':').map(Number);
+  const [eh,em]=tot.split(':').map(Number);
+  while(h*60+m < eh*60+em){
+    slots.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
+    m+=30;if(m>=60){m-=60;h++;}
+  }
+  return slots;
+}
+
+function loadSlots(){
+  const datum=document.getElementById('bk-datum').value;
+  const el=document.getElementById('bk-slots');
+  document.getElementById('bk-tijd').value='';
+  if(!datum||!activeBrb){el.innerHTML='<p style="font-size:.78rem;color:var(--gray)">Kies eerst een datum.</p>';return}
+  
+  const d=new Date(datum);
+  const dagIdx=d.getDay(); // 0=Sun,1=Mon...
+  const dagMap=[6,0,1,2,3,4,5]; // convert JS day to our index
+  const key=DAGEN_SHORT[dagMap[dagIdx]];
+  const agenda=getAgenda(activeBrb.id);
+  const dag=agenda[key];
+  
+  if(!dag||!dag.open){
+    el.innerHTML='<div style="background:rgba(240,69,90,.1);border:1px solid rgba(240,69,90,.3);padding:.8rem;font-size:.78rem;color:var(--red)">🚫 Deze kapper is op '+DAGEN[dagMap[dagIdx]]+' gesloten.</div>';
+    return;
+  }
+  
+  let slots=genSlots(dag.van,dag.tot);
+  
+  // Filter blocked times
+  const bloks=getBloks(activeBrb.id).filter(b=>b.datum===datum);
+  const bookedTimes=bookings.filter(b=>b.barberId===activeBrb.id&&b.datum===datum).map(b=>b.tijd);
+  
+  // Filter out booked slots
+  slots=slots.filter(s=>!bookedTimes.includes(s));
+  
+  if(!slots.length){el.innerHTML='<p style="font-size:.78rem;color:var(--red)">Geen beschikbare tijden op deze dag.</p>';return}
+  
+  el.innerHTML='<div class="slot-grid">'+slots.map(s=>{
+    const isBlocked=bloks.some(b=>s>=b.van&&s<b.tot);
+    return`<div class="slot${isBlocked?' blocked':''}" onclick="${isBlocked?'':'selectSlot(this,''+s+'')'}" title="${isBlocked?'Geblokkeerd':s}">${isBlocked?'🚫':s}</div>`;
+  }).join('')+'</div>';
+  updateHerhalingInfo();
+}
+
+function selectSlot(el,tijd){
+  document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('bk-tijd').value=tijd;
+  updateHerhalingInfo();
+}
+
+function toggleHerhaling(){
+  const val=document.getElementById('bk-herhaal').value;
+  const wrap=document.getElementById('herhaal-aantal-wrap');
+  if(wrap)wrap.style.display=val?'block':'none';
+  updateHerhalingInfo();
+}
+
+function updateHerhalingInfo(){
+  const val=document.getElementById('bk-herhaal').value;
+  const info=document.getElementById('herhaal-info');
+  const datum=document.getElementById('bk-datum').value;
+  const tijd=document.getElementById('bk-tijd').value;
+  if(!info)return;
+  if(!val||!datum||!tijd){info.style.display='none';return}
+  const n=parseInt(document.getElementById('bk-herhaal-n').value)||4;
+  const labels={weekly:'week',biweekly:'2 weken',monthly:'maand'};
+  info.style.display='block';
+  info.textContent=`✅ Jouw afspraak wordt ${n}x herhaald, elke ${labels[val]} op ${datum.split('-').reverse().join('-')} om ${tijd}. Je ontvangt een bevestiging en kan altijd annuleren.`;
+}
+
 // ══════════════ AUTH SYSTEEM ══════════════
 let currentUser=null; // {barberId, email, naam}
 
