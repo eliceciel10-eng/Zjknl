@@ -13,7 +13,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#06060a;--dark:#0e0e14;--card:#13131a;--card2:#1a1a24;--border:#22222e;--border2:#2e2e3e;--gold:#d4a843;--gold2:#f0c96a;--gold3:rgba(212,168,67,.12);--white:#eeeae2;--gray:#6b6b80;--gray2:#44445a;--green:#22d97a;--red:#f0455a;--blue:#4a9eff;--purple:#a855f7}
+:root{
+  --ff-display:'Bebas Neue',sans-serif;--bg:#06060a;--dark:#0e0e14;--card:#13131a;--card2:#1a1a24;--border:#22222e;--border2:#2e2e3e;--gold:#d4a843;--gold2:#f0c96a;--gold3:rgba(212,168,67,.12);--white:#eeeae2;--gray:#6b6b80;--gray2:#44445a;--green:#22d97a;--red:#f0455a;--blue:#4a9eff;--purple:#a855f7}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 ::selection{background:var(--gold3);color:var(--gold2)}
@@ -22,8 +23,8 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:900;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(6,6,10,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:baseline;gap:3px;cursor:pointer}
-.zjk{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:5px;color:var(--gold)}
-.dot,.tld{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--gray);letter-spacing:2px}
+.zjk{font-family:var(--ff-display);font-size:1.85rem;letter-spacing:5px;color:var(--gold)}
+.dot,.tld{font-family:var(--ff-display);font-size:1.1rem;color:var(--gray);letter-spacing:2px}
 .navl{display:flex;gap:2rem;list-style:none}
 .navl a{color:var(--gray);font-size:.76rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;transition:.2s;text-decoration:none}
 .navl a:hover{color:var(--gold)}
@@ -42,20 +43,20 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .hero-content{position:relative;z-index:1;max-width:760px}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.6rem;font-size:.67rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
 .eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
-.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10vw,9.5rem);line-height:.9;letter-spacing:1px;margin-bottom:1.5rem}
+.h1{font-family:var(--ff-display);font-size:clamp(4rem,10vw,9.5rem);line-height:.9;letter-spacing:1px;margin-bottom:1.5rem}
 .h1 .gold{color:var(--gold)}.h1 .outline{-webkit-text-stroke:1.5px rgba(238,234,226,.35);color:transparent}
 .hero-sub{font-size:1rem;color:var(--gray);line-height:1.9;max-width:480px;margin-bottom:2.2rem;font-weight:300}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
 .hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
 .hs{border-left:2px solid var(--border2);padding-left:1.2rem}
-.hs-n{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--gold);line-height:1}
+.hs-n{font-family:var(--ff-display);font-size:2.2rem;color:var(--gold);line-height:1}
 .hs-l{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gray2)}
 
 /* SECTIONS */
 .sec{padding:5rem 5%}.sw{max-width:1160px;margin:0 auto}
 .sl{font-size:.64rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem}
 .sl::before{content:'';width:18px;height:1px;background:var(--gold)}
-.st{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.5rem);line-height:.95;margin-bottom:.9rem}
+.st{font-family:var(--ff-display);font-size:clamp(2rem,5vw,3.5rem);line-height:.95;margin-bottom:.9rem}
 .ss{color:var(--gray);font-size:.92rem;line-height:1.85;font-weight:300;max-width:460px;margin-bottom:2.5rem}
 
 /* SEARCH */
@@ -82,7 +83,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .type-vrouw{background:rgba(168,85,247,.15);color:var(--purple);border:1px solid rgba(168,85,247,.3)}
 .type-unisex{background:rgba(212,168,67,.1);color:var(--gold);border:1px solid rgba(212,168,67,.25)}
 .bc-top{padding:1.3rem 1.4rem .8rem;display:flex;gap:1rem;align-items:flex-start;position:relative}
-.av{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:#000;flex-shrink:0;border:2px solid var(--gold)}
+.av{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.3rem;color:#000;flex-shrink:0;border:2px solid var(--gold)}
 .bc-name{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.12rem}
 .bc-title{font-size:.67rem;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem}
 .bc-stars{color:var(--gold);font-size:.75rem;letter-spacing:1px}
@@ -92,7 +93,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .bc-services{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.8rem}
 .svc-tag{padding:.15rem .5rem;font-size:.58rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;border:1px solid rgba(212,168,67,.25);color:var(--gold);background:var(--gold3)}
 .bc-foot{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.4rem;border-top:1px solid var(--border);margin-top:auto}
-.bc-price{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:var(--gold);line-height:1}
+.bc-price{font-family:var(--ff-display);font-size:1.45rem;color:var(--gold);line-height:1}
 .bc-price small{font-family:'DM Sans',sans-serif;font-size:.63rem;color:var(--gray)}
 .no-res{text-align:center;padding:5rem 1rem;color:var(--gray);grid-column:1/-1}
 
@@ -112,14 +113,14 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 /* STORY */
 .story-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .story-badge{display:inline-block;background:var(--gold3);border:1px solid rgba(212,168,67,.25);color:var(--gold);font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:.38rem 1rem;margin-bottom:1.5rem}
-.story-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin-bottom:1.2rem}
+.story-text h2{font-family:var(--ff-display);font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin-bottom:1.2rem}
 .story-text p{color:var(--gray);line-height:1.95;font-size:.92rem;margin-bottom:1.1rem}
 .story-sig{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--gold);margin-top:1.5rem;font-style:italic}
 .story-sig small{display:block;font-family:'DM Sans',sans-serif;font-size:.68rem;color:var(--gray);font-style:normal;letter-spacing:1px;margin-top:.2rem}
 .story-card{background:var(--card);border:1px solid var(--border);padding:2.5rem;position:relative;overflow:hidden}
-.story-card::before{content:'ZJK';font-family:'Bebas Neue',sans-serif;font-size:8rem;color:var(--border);position:absolute;right:-1rem;bottom:-2rem;letter-spacing:5px;pointer-events:none}
+.story-card::before{content:'ZJK';font-family:var(--ff-display);font-size:8rem;color:var(--border);position:absolute;right:-1rem;bottom:-2rem;letter-spacing:5px;pointer-events:none}
 .s-stat{margin-bottom:1.4rem}
-.s-stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--gold);line-height:1}
+.s-stat-n{font-family:var(--ff-display);font-size:2.8rem;color:var(--gold);line-height:1}
 .s-stat-l{font-size:.67rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
 .s-div{width:38px;height:2px;background:var(--gold);margin:1.3rem 0}
 .made-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--card2);border:1px solid var(--border2);padding:.55rem .9rem;font-size:.7rem;color:var(--gray);margin-top:1.4rem}
@@ -132,7 +133,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .perk-t h4{font-size:.83rem;font-weight:700;margin-bottom:.12rem}
 .perk-t p{font-size:.77rem;color:var(--gray);line-height:1.6}
 .form-box{background:var(--card);border:1px solid var(--border);padding:2.3rem}
-.form-title{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:1px;margin-bottom:.3rem}
+.form-title{font-family:var(--ff-display);font-size:1.65rem;letter-spacing:1px;margin-bottom:.3rem}
 .form-sub{font-size:.76rem;color:var(--gray);margin-bottom:1.6rem}
 .fg{margin-bottom:.95rem}
 .fg label{display:block;font-size:.63rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:.36rem}
@@ -149,7 +150,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .col-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.38rem}
 .co{width:27px;height:27px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:.2s;flex-shrink:0}
 .co.sel{border-color:var(--white)}
-.av-prev{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.25rem;color:#000;margin-top:.45rem;border:2px solid var(--gold)}
+.av-prev{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.25rem;color:#000;margin-top:.45rem;border:2px solid var(--gold)}
 .fsub{width:100%;background:var(--gold);color:#000;border:none;padding:.92rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.77rem;letter-spacing:2.5px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:.4rem}
 .fsub:hover{background:var(--gold2)}
 
@@ -168,19 +169,19 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 /* ADMIN */
 .admin-lock{max-width:400px;margin:0 auto;text-align:center}
 .pin-row{display:flex;gap:.8rem;justify-content:center;margin:1.5rem 0 1rem}
-.pin-row input{width:50px;height:56px;text-align:center;font-size:1.5rem;font-weight:700;background:var(--card);border:1px solid var(--border);color:var(--white);outline:none;transition:.22s;font-family:'Bebas Neue',sans-serif}
+.pin-row input{width:50px;height:56px;text-align:center;font-size:1.5rem;font-weight:700;background:var(--card);border:1px solid var(--border);color:var(--white);outline:none;transition:.22s;font-family:var(--ff-display)}
 .pin-row input:focus{border-color:var(--gold)}
 .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
 .kpi{background:var(--card);border:1px solid var(--border);padding:1.4rem;position:relative;overflow:hidden}
 .kpi::after{content:attr(data-icon);position:absolute;right:.8rem;top:50%;transform:translateY(-50%);font-size:2.2rem;opacity:.13}
-.kpi-n{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--gold);line-height:1}
+.kpi-n{font-family:var(--ff-display);font-size:2.1rem;color:var(--gold);line-height:1}
 .kpi-l{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:.2rem}
 .dash-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem}
 .dash-card{background:var(--card);border:1px solid var(--border);padding:1.6rem}
-.dash-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:1px;color:var(--gold);margin-bottom:1.1rem}
+.dash-card h3{font-family:var(--ff-display);font-size:1.15rem;letter-spacing:1px;color:var(--gold);margin-bottom:1.1rem}
 .kpr-row{display:flex;align-items:center;gap:.9rem;padding:.75rem 0;border-bottom:1px solid var(--border);font-size:.8rem}
 .kpr-row:last-child{border:none}
-.av-sm{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.88rem;color:#000;flex-shrink:0}
+.av-sm{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:.88rem;color:#000;flex-shrink:0}
 .fin-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.81rem}
 .fin-row:last-child{border:none}
 .fl{color:var(--gray)}.fr{font-weight:600}
@@ -194,7 +195,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .k-dash{background:var(--card);border:1px solid var(--border);padding:2rem;max-width:840px;width:100%;max-height:92vh;overflow-y:auto;position:relative}
 .k-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1.4rem}
 .k-kpi{background:var(--dark);padding:1.1rem;text-align:center}
-.k-kpi-n{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;color:var(--gold);line-height:1}
+.k-kpi-n{font-family:var(--ff-display);font-size:1.85rem;color:var(--gold);line-height:1}
 .k-kpi-l{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
 .content-box{background:var(--dark);border:1px solid var(--border2);padding:1.4rem;margin-bottom:1.1rem}
 .content-box h4{font-size:.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
@@ -219,7 +220,7 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
 .overlay.open{display:flex}
 .modal{background:var(--card);border:1px solid var(--border);padding:2.1rem;max-width:500px;width:100%;position:relative;max-height:92vh;overflow-y:auto}
-.modal h3{font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:1px;margin-bottom:1.3rem}
+.modal h3{font-family:var(--ff-display);font-size:1.55rem;letter-spacing:1px;margin-bottom:1.3rem}
 .modal-x{position:absolute;top:.85rem;right:.85rem;background:none;border:none;color:var(--gray);font-size:1.3rem;cursor:pointer;transition:.2s;line-height:1}
 .modal-x:hover{color:var(--white)}
 .modal-ki{display:flex;align-items:center;gap:.9rem;padding:.85rem;background:var(--dark);border:1px solid var(--border);margin-bottom:1.3rem}
@@ -267,6 +268,57 @@ body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;ov
 .slot.selected{background:var(--gold);border-color:var(--gold);color:#000;font-weight:700}
 .herhaling-box{background:rgba(212,168,67,.05);border:1px solid rgba(212,168,67,.2);padding:1rem;margin-top:.8rem}
 .herhaling-box h5{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem}
+
+/* STATS */
+.stat-bar-wrap{margin-bottom:.6rem}
+.stat-bar-label{display:flex;justify-content:space-between;font-size:.72rem;color:var(--gray);margin-bottom:.25rem}
+.stat-bar-label span{color:var(--gold);font-weight:700}
+.stat-bar-bg{height:8px;background:var(--border2);overflow:hidden}
+.stat-bar-fill{height:100%;background:var(--gold);transition:.6s ease}
+.stat-period-btns{display:flex;gap:.4rem;margin-bottom:1rem}
+.period-btn{padding:.3rem .75rem;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:1px solid var(--border);color:var(--gray);cursor:pointer;background:transparent;transition:.2s}
+.period-btn.active{background:var(--gold);border-color:var(--gold);color:#000}
+
+/* CONTACTS */
+.contact-card{display:flex;align-items:center;gap:.8rem;padding:.7rem;background:var(--dark);border:1px solid var(--border);margin-bottom:.4rem;transition:.2s}
+.contact-card:hover{border-color:rgba(212,168,67,.3)}
+.contact-av{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;color:#000;font-size:.85rem;flex-shrink:0}
+.contact-info{flex:1}
+.contact-name{font-size:.83rem;font-weight:600}
+.contact-sub{font-size:.68rem;color:var(--gray)}
+.contact-actions{display:flex;gap:.35rem}
+
+/* LOCATION */
+.loc-banner{background:rgba(74,158,255,.06);border:1px solid rgba(74,158,255,.2);padding:.8rem 1rem;display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.loc-banner p{font-size:.78rem;color:var(--white);flex:1;line-height:1.5}
+.loc-banner p small{color:var(--gray);display:block}
+
+/* BOOK AGAIN */
+.book-again-banner{background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.2);padding:1rem 1.2rem;margin-bottom:.6rem;display:flex;align-items:center;gap:.9rem;flex-wrap:wrap}
+.book-again-banner p{font-size:.8rem;color:var(--white);flex:1;line-height:1.5}
+.book-again-banner p small{color:var(--gray);display:block}
+
+/* COLOR PICKER KAPPER */
+.kapper-color-picker{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.kc{width:28px;height:28px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:.2s;flex-shrink:0}
+.kc.sel{border-color:var(--white)}
+
+/* CANCEL PAGE */
+.cancel-page{position:fixed;inset:0;background:var(--bg);z-index:960;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.cancel-card{background:var(--card);border:1px solid var(--border);padding:2.5rem;max-width:480px;width:100%;text-align:center}
+
+/* WAITLIST */
+.waitlist-badge{background:rgba(255,165,0,.1);color:orange;border:1px solid rgba(255,165,0,.3);font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:.2rem .5rem}
+
+/* REMINDERS */
+.reminder-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.32rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;transition:.2s;white-space:nowrap}
+.reminder-wa{background:rgba(37,211,102,.15);color:#25d366;border:1px solid rgba(37,211,102,.3)}
+.reminder-wa:hover{background:rgba(37,211,102,.25)}
+.reminder-copy{background:var(--gold3);color:var(--gold);border:1px solid rgba(212,168,67,.3)}
+.reminder-copy:hover{background:rgba(212,168,67,.2)}
+.notif-banner{background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.2);padding:1rem 1.2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.notif-banner p{font-size:.78rem;color:var(--gray);flex:1;line-height:1.6}
+.notif-banner p strong{color:var(--white)}
 
 /* LOGIN */
 .login-wrap{max-width:420px;margin:0 auto}
@@ -351,6 +403,11 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
     <div class="sl">Zoek & Filter</div>
     <h2 class="st">VIND JOUW<br>KAPPER</h2>
     <p class="ss">Filter op type kapper en stad. Klik op een profiel om te boeken of een review achter te laten.</p>
+    <div class="loc-banner" id="loc-banner">
+      <span style="font-size:1.2rem">📍</span>
+      <p><strong>Kappers bij jou in de buurt</strong><small>Geef toestemming om kappers op afstand te sorteren</small></p>
+      <button class="btn btn-g btn-sm" onclick="getLocation()">📍 Gebruik Locatie</button>
+    </div>
     <div class="search-bar">
       <div class="si" style="flex:2"><span class="ico">🔍</span><input type="text" id="s-txt" placeholder="Naam, stad of dienst..." oninput="doFilter()"></div>
       <div class="si"><select id="s-stad" onchange="doFilter()"><option value="">Alle steden</option><option>Amsterdam</option><option>Rotterdam</option><option>Den Haag</option><option>Utrecht</option><option>Eindhoven</option><option>Breda</option><option>Tilburg</option><option>Groningen</option></select></div>
@@ -604,6 +661,13 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
     <div class="fg"><label>Extra wensen</label><textarea id="bk-note" placeholder="Specifieke stijl, kleur, referentie..." style="height:65px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;resize:none;transition:.22s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"></textarea></div>
     <div class="ck-row"><input type="checkbox" id="bk-promo" checked><label for="bk-promo">Ja, ik ontvang graag aanbiedingen van deze kapper.</label></div>
     <div class="ck-row"><input type="checkbox" id="bk-akk"><label for="bk-akk">Ik ga akkoord met de <a href="#">voorwaarden</a> en gegevensopslag.*</label></div>
+    <div id="waitlist-option" style="display:none;background:rgba(255,165,0,.06);border:1px solid rgba(255,165,0,.2);padding:.8rem;margin-bottom:.6rem">
+      <p style="font-size:.78rem;color:orange;margin-bottom:.5rem">⏳ Deze tijd is al geboekt. Wil je op de wachtlijst?</p>
+      <div class="ck-row"><input type="checkbox" id="bk-waitlist"><label for="bk-waitlist" style="color:var(--white)">Ja, zet mij op de wachtlijst voor <span id="waitlist-slot"></span></label></div>
+    </div>
+    <div style="background:rgba(34,217,122,.05);border:1px solid rgba(34,217,122,.15);padding:.8rem;margin-bottom:.6rem">
+      <p style="font-size:.75rem;color:var(--gray);line-height:1.6">✅ Na het boeken ontvang je een <strong style="color:var(--white)">persoonlijke annuleringslink</strong> die je kunt gebruiken om de afspraak zelf te annuleren.</p>
+    </div>
     <button class="fsub" onclick="submitBk()">✦ BEVESTIG AFSPRAAK</button>
   </div>
 </div>
@@ -627,7 +691,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
 <div class="overlay" id="kd-ov">
   <div class="k-dash">
     <button class="modal-x" onclick="closeKd()">✕</button>
-    <h3 id="kd-title" style="font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:1px;margin-bottom:.2rem"></h3>
+    <h3 id="kd-title" style="font-family:var(--ff-display);font-size:1.55rem;letter-spacing:1px;margin-bottom:.2rem"></h3>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.3rem;flex-wrap:wrap;gap:.5rem">
       <p style="color:var(--gray);font-size:.76rem">Persoonlijk dashboard</p>
       <button class="btn btn-o btn-sm" onclick="openAccount()">⚙️ Account Instellingen</button>
@@ -637,6 +701,63 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
       <div class="k-kpi"><div class="k-kpi-n" id="kd-rev">€0</div><div class="k-kpi-l">Totale omzet</div></div>
       <div class="k-kpi"><div class="k-kpi-n" id="kd-mnd">€0</div><div class="k-kpi-l">Deze maand</div></div>
     </div>
+    <!-- STATISTIEKEN -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>📊 STATISTIEKEN</h3>
+      <div class="stat-period-btns">
+        <button class="period-btn active" onclick="setStatPeriod('week',this)">Week</button>
+        <button class="period-btn" onclick="setStatPeriod('maand',this)">Maand</button>
+        <button class="period-btn" onclick="setStatPeriod('jaar',this)">Jaar</button>
+      </div>
+      <div id="kd-stats"></div>
+      <div style="margin-top:1.2rem">
+        <div style="font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem">POPULAIRSTE DIENSTEN</div>
+        <div id="kd-popular-services"></div>
+      </div>
+    </div>
+
+    <!-- VASTE KLANTEN / CONTACTEN -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>👥 VASTE KLANTEN</h3>
+      <p style="font-size:.76rem;color:var(--gray);margin-bottom:1rem">Klanten die meer dan 1x zijn geweest. Direct WhatsApp sturen.</p>
+      <div id="kd-contacts"></div>
+    </div>
+
+    <!-- BOOK AGAIN -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>🔄 BOOK AGAIN</h3>
+      <p style="font-size:.76rem;color:var(--gray);margin-bottom:.8rem">Klanten die al een tijdje niet zijn geweest. Stuur ze een berichtje om terug te komen!</p>
+      <div id="kd-book-again"></div>
+    </div>
+
+    <!-- WACHTLIJST -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>⏳ WACHTLIJST</h3>
+      <p style="font-size:.76rem;color:var(--gray);margin-bottom:.8rem">Klanten die op de wachtlijst staan voor een volle tijd. Klik om ze een WhatsApp te sturen als er een plek vrijkomt.</p>
+      <div id="kd-waitlist"></div>
+    </div>
+
+    <!-- HERINNERINGEN & NOTIFICATIES -->
+    <div class="dash-card" style="margin-bottom:1.1rem">
+      <h3>🔔 HERINNERINGEN INSTELLEN</h3>
+      <div class="notif-banner" id="notif-banner">
+        <div>
+          <p><strong>Push notificaties inschakelen</strong><br>
+          Ontvang een melding op je telefoon als er een nieuwe boeking binnenkomt.</p>
+        </div>
+        <button class="btn btn-g btn-sm" onclick="requestNotifPermission()">🔔 Inschakelen</button>
+      </div>
+      <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem">Automatische WhatsApp herinnering tekst</div>
+      <textarea id="reminder-template" style="width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.8rem;font-family:'DM Sans',sans-serif;font-size:.83rem;outline:none;resize:none;height:80px;transition:.22s" 
+        onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border)'"
+        placeholder="Bijv: Hallo {naam}! Herinnering: je hebt morgen een afspraak bij mij op {datum} om {tijd}. Tot dan! 💈">Hallo {naam}! Even een herinnering: je hebt een afspraak bij mij op {datum} om {tijd}. Niet kunnen? Stuur me even een berichtje! 💈 - {kapper}</textarea>
+      <p style="font-size:.68rem;color:var(--gray2);margin-top:.4rem">Gebruik {naam}, {datum}, {tijd}, {dienst} en {kapper} — deze worden automatisch ingevuld.</p>
+      <button class="btn btn-g btn-sm" style="margin-top:.7rem" onclick="saveReminderTemplate()">💾 Opslaan</button>
+      <div style="margin-top:1.2rem;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem">Herinneringen versturen — vandaag</div>
+      <p style="font-size:.78rem;color:var(--gray);margin-bottom:.8rem">Klanten met een afspraak morgen of overmorgen:</p>
+      <div id="upcoming-reminders"></div>
+    </div>
+
     <!-- AGENDA INSTELLINGEN -->
     <div class="dash-card" style="margin-bottom:1.1rem">
       <h3>📅 AGENDA & OPENINGSTIJDEN</h3>
@@ -682,6 +803,51 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
       <div id="kd-reviews"></div>
       <button class="btn btn-o btn-sm" style="margin-top:.9rem" onclick="openReviewModal(activeKd?.id)">+ Review toevoegen voor mij</button>
     </div>
+
+    <div class="dash-card" style="margin-top:1.1rem">
+      <h3>✏️ PROFIEL BEWERKEN</h3>
+      <p style="font-size:.76rem;color:var(--gray);margin-bottom:1.2rem">Pas je naam, bio, diensten en foto's aan.</p>
+      <div class="fr2">
+        <div class="fg"><label>Voornaam</label><input type="text" id="ep-naam" placeholder="Voornaam"></div>
+        <div class="fg"><label>Achternaam</label><input type="text" id="ep-anaam" placeholder="Achternaam"></div>
+      </div>
+      <div class="fg"><label>Tagline</label><input type="text" id="ep-titel" placeholder="Bijv. Fade Specialist · Amsterdam"></div>
+      <div class="fg"><label>Over jou</label><textarea id="ep-bio" style="height:80px;width:100%;background:var(--dark);border:1px solid var(--border);color:var(--white);padding:.75rem;font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;resize:none;transition:.22s" placeholder="Jouw specialiteit..."></textarea></div>
+      <div class="fg"><label>Telefoon / WhatsApp</label><input type="tel" id="ep-tel" placeholder="+31 6 ..."></div>
+      <div class="fg">
+        <label>Profiel kleur</label>
+        <div class="kapper-color-picker" id="ep-color-picker">
+          <div class="kc" data-c="#d4a843" style="background:#d4a843" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#f0455a" style="background:#f0455a" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#22d97a" style="background:#22d97a" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#4a9eff" style="background:#4a9eff" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#a855f7" style="background:#a855f7" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#ff6b35" style="background:#ff6b35" onclick="pickEpCol(this)"></div>
+          <div class="kc" data-c="#eeeae2" style="background:#eeeae2" onclick="pickEpCol(this)"></div>
+        </div>
+      </div>
+      <div class="fg"><label>Instagram / TikTok</label><input type="text" id="ep-insta" placeholder="@jouwnaam"></div>
+      <div class="fg">
+        <label>Diensten & Prijzen</label>
+        <div class="svc-builder">
+          <div class="svc-builder-row">
+            <input type="text" id="ep-svc-name" placeholder="Dienst naam">
+            <input type="number" id="ep-svc-price" placeholder="€" min="1" style="width:80px">
+            <button class="add-svc-btn" onclick="addEpSvc()">+ Voeg toe</button>
+          </div>
+          <div class="svc-list" id="ep-svc-list"></div>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Nieuwe foto's toevoegen</label>
+        <div class="upload-zone" style="position:relative">
+          <input type="file" accept="image/*,video/*" multiple onchange="handleEpUpload(event)">
+          <p>📸 Klik of sleep foto's hier</p>
+        </div>
+        <div class="media-thumbs" id="ep-thumbs"></div>
+      </div>
+      <button class="fsub" onclick="saveProfile()">✦ PROFIEL OPSLAAN</button>
+    </div>
   </div>
 </div>
 
@@ -702,7 +868,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
 <div class="overlay" id="gallery-ov">
   <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem;max-width:700px;width:100%;position:relative;max-height:92vh;overflow-y:auto">
     <button class="modal-x" onclick="closeGallery()">✕</button>
-    <h3 id="gallery-title" style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;margin-bottom:1.2rem"></h3>
+    <h3 id="gallery-title" style="font-family:var(--ff-display);font-size:1.4rem;letter-spacing:1px;margin-bottom:1.2rem"></h3>
     <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.8rem"></div>
   </div>
 </div>
@@ -747,7 +913,7 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:2.8rem 
 <div class="overlay" id="welcome-ov">
   <div style="background:var(--card);border:1px solid var(--border);padding:2.5rem;max-width:560px;width:100%;position:relative;text-align:center">
     <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
-    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:2px;color:var(--gold);margin-bottom:.5rem">WELKOM OP ZJK!</h3>
+    <h3 style="font-family:var(--ff-display);font-size:2rem;letter-spacing:2px;color:var(--gold);margin-bottom:.5rem">WELKOM OP ZJK!</h3>
     <p id="wlc-name" style="font-size:1rem;color:var(--white);margin-bottom:.4rem;font-weight:600"></p>
     <p style="font-size:.85rem;color:var(--gray);line-height:1.8;margin-bottom:1.5rem">Jouw profiel staat nu live! Klanten kunnen je vinden en boekingen maken. Hieronder vind je alles wat je nodig hebt.</p>
     
@@ -890,10 +1056,10 @@ function doFilter(){
   const txt=document.getElementById('s-txt').value.toLowerCase();
   const stad=document.getElementById('s-stad').value;
   const prijs=document.getElementById('s-prijs').value;
-  const list=barbers.filter(b=>{
+  let list=barbers.filter(b=>{
     const mT=!txt||[b.naam,b.anaam,b.stad,b.bio,...(b.services||[]).map(s=>s.name)].some(v=>v&&v.toLowerCase().includes(txt));
     const mS=!stad||b.stad===stad;
-    const minP=b.services&&b.services.length?Math.min(...b.services.map(s=>s.price)):0;
+    const minP=b.services&&b.services.length?Math.min(...b.services.map(s=>s.price)):999;
     let mP=true;
     if(prijs==='0-20')mP=minP<=20;
     else if(prijs==='20-35')mP=minP>20&&minP<=35;
@@ -901,6 +1067,14 @@ function doFilter(){
     const mG=activeGender==='all'||b.type===activeGender;
     return mT&&mS&&mP&&mG;
   });
+  // Sort by distance if location available
+  if(userLat){
+    list.sort((a,b)=>{
+      const ca=CITY_COORDS[a.stad]||{lat:0,lng:0};
+      const cb=CITY_COORDS[b.stad]||{lat:0,lng:0};
+      return distanceKm(userLat,userLng,ca.lat,ca.lng)-distanceKm(userLat,userLng,cb.lat,cb.lng);
+    });
+  }
   renderBarbers(list);
 }
 
@@ -954,9 +1128,32 @@ function openBk(id){
   const sel=document.getElementById('bk-dienst');
   sel.innerHTML='<option value="">— Kies dienst —</option>'+(b.services||[]).map(s=>`<option value="${s.price}">${s.name} — €${s.price}</option>`).join('');
   document.getElementById('bk-ov').classList.add('open');
+  setTimeout(setupSlotSuggestion, 100);
 }
 function closeBk(){document.getElementById('bk-ov').classList.remove('open')}
+
+function setupSlotSuggestion(){
+  const telEl = document.getElementById('bk-tel');
+  if(telEl && !telEl.dataset.suggestionSetup){
+    telEl.addEventListener('blur', showSlotSuggestion);
+    telEl.dataset.suggestionSetup = '1';
+  }
+}
 function submitBk(){
+  // Check if waitlist
+  const waitlistCb=document.getElementById('bk-waitlist');
+  if(waitlistCb&&waitlistCb.checked&&waitlistCb.closest('#waitlist-option')?.style.display!=='none'){
+    const naam=document.getElementById('bk-naam').value.trim();
+    const anaam=document.getElementById('bk-anaam').value.trim();
+    const tel=document.getElementById('bk-tel').value.trim();
+    const dienstSel=document.getElementById('bk-dienst');
+    const dienst=dienstSel.options[dienstSel.selectedIndex]?.text||'';
+    if(!naam||!tel){toast('❌ Vul naam en telefoon in.');return;}
+    addToWaitlist(activeBrb.id,{naam,anaam,tel,dienst,datum:document.getElementById('bk-datum').value,tijd:document.getElementById('bk-tijd').value,ts:new Date().toISOString()});
+    closeBk();
+    toast('⏳ '+naam+' staat op de wachtlijst! De kapper stuurt je een berichtje als er een plek vrijkomt.');
+    return;
+  }
   const naam=document.getElementById('bk-naam').value.trim();
   const anaam=document.getElementById('bk-anaam').value.trim();
   const tel=document.getElementById('bk-tel').value.trim();
@@ -989,13 +1186,17 @@ function submitBk(){
   DB.s('bookings',bookings);
   const br=barbers.find(x=>x.id===activeBrb.id);
   if(br){br.bookings=br.bookings||[];allBks.forEach(b=>br.bookings.push(b));DB.s('barbers',barbers)}
+    // Save preferred slot
+  savePreferredSlot(activeBrb.id, bk.tel, bk.tijd);
+  const cancelUrl = getCancelUrl(bk);
   closeBk();updStats();doFilter();
-  
-  if(allBks.length>1){
-    toast(`✅ ${allBks.length} afspraken gepland bij ${activeBrb.naam}! Eerste: ${bk.datum} om ${bk.tijd}`);
-  } else {
-    toast(`✅ Afspraak bij ${activeBrb.naam} bevestigd op ${bk.datum} om ${bk.tijd}!`);
-  }
+  sendNewBookingNotif(activeBrb.naam, bk.naam+' '+bk.anaam, bk.datum, bk.tijd);
+  // Show cancel link
+  setTimeout(function(){
+    if(confirm('✅ Afspraak bevestigd bij '+activeBrb.naam+'!\n\nKopieer je annuleringslink zodat je de afspraak zelf kan annuleren?')){
+      navigator.clipboard.writeText(cancelUrl).then(function(){toast('🔗 Link gekopieerd!');}).catch(function(){prompt('Jouw annuleringslink:',cancelUrl);});
+    }
+  }, 600);
 }
 
 // ══════════════ KAPPER DASHBOARD ══════════════
@@ -1027,6 +1228,18 @@ function openKd(id){
   document.getElementById('content-out').textContent='Jouw content script verschijnt hier...';
   document.getElementById('kd-maand').style.display='none';
   document.getElementById('kd-ov').classList.add('open');
+  setTimeout(loadEditProfile, 100);
+  setTimeout(()=>{
+    renderUpcomingReminders();
+    checkNotifStatus();
+    renderStats();
+    renderContacts();
+    renderWaitlist();
+    renderBookAgain();
+    loadEpColorPicker();
+    const tmplEl=document.getElementById('reminder-template');
+    if(tmplEl&&currentUser)tmplEl.value=getReminderTemplate(currentUser.barberId);
+  }, 150);
 }
 function closeKd(){document.getElementById('kd-ov').classList.remove('open')}
 
@@ -1053,16 +1266,22 @@ function renderKdFin(mndR,totR){
 function renderKdBk(bks){
   const tb=document.getElementById('kd-bk-body');
   if(!bks.length){tb.innerHTML='<tr><td colspan="5" style="color:var(--gray);padding:1rem;text-align:center">Nog geen afspraken</td></tr>';return}
-  tb.innerHTML=bks.slice(-20).reverse().map(b=>`<tr>
-    <td>${b.naam} ${b.anaam}</td>
-    <td>${b.dienst}</td>
-    <td>${b.datum||'—'}${b.herhaling?'<span class="badge badge-gold" style="margin-left:.3rem">🔄</span>':''}</td>
-    <td>${b.tijd||'—'}</td>
-    <td>
-      <span class="badge badge-g">Bevestigd</span>
-      <button class="btn btn-sm" style="background:rgba(240,69,90,.1);color:var(--red);border:1px solid rgba(240,69,90,.3);font-size:.58rem;margin-left:.3rem" onclick="cancelBk('${b.id}')">Annuleer</button>
-    </td>
-  </tr>`).join('');
+  tb.innerHTML=bks.slice(-20).reverse().map(b=>{
+    const waLink=b.tel?'https://wa.me/'+b.tel.replace(/[^0-9]/g,'')+encodeURIComponent('?text=Hallo '+b.naam+'! Even een herinnering: je hebt morgen een afspraak bij '+activeKd.naam+' op '+b.datum+' om '+b.tijd+'. Tot dan! 💈'):'';
+    const reminderMsg='Hallo '+b.naam+'! Herinnering: afspraak bij '+activeKd.naam+' op '+b.datum+' om '+b.tijd+'. Niet kunnen? Laat het weten! 💈';
+    const safeMsg=reminderMsg.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return '<tr>'
+      +'<td>'+b.naam+' '+b.anaam+'</td>'
+      +'<td>'+b.dienst+'</td>'
+      +'<td>'+(b.datum||'—')+(b.herhaling?'<span class="badge badge-gold" style="margin-left:.3rem">🔄</span>':'')+'</td>'
+      +'<td>'+(b.tijd||'—')+'</td>'
+      +'<td style="display:flex;gap:.3rem;align-items:center;flex-wrap:wrap;padding:.5rem 0">'
+      +(waLink?'<a href="'+waLink+'" target="_blank" class="reminder-btn reminder-wa">💬 WhatsApp</a>':'')
+      +'<button class="reminder-btn reminder-copy" onclick="copyReminder(this.dataset.msg)" data-msg="'+safeMsg+'">📋 Kopieer</button>'
+      +'<button class="btn btn-sm" style="background:rgba(240,69,90,.1);color:var(--red);border:1px solid rgba(240,69,90,.3);font-size:.58rem" onclick="cancelBk(this.dataset.id)" data-id="'+b.id+'">✕</button>'
+      +'</td>'
+      +'</tr>';
+  }).join('');
 }
 
 function renderKdRv(barberId){
@@ -1279,6 +1498,78 @@ function installPWA(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt.
 function dismissPWA(){document.getElementById('pwa-banner').classList.remove('show')}
 
 // ══════════════ UTILS ══════════════
+function loadEditProfile(){
+  if(!activeKd)return;
+  const b=activeKd;
+  document.getElementById('ep-naam').value=b.naam||'';
+  document.getElementById('ep-anaam').value=b.anaam||'';
+  document.getElementById('ep-titel').value=b.titel||'';
+  document.getElementById('ep-bio').value=b.bio||'';
+  document.getElementById('ep-tel').value=b.tel||'';
+  document.getElementById('ep-insta').value=b.insta||'';
+  epSvcs=[...(b.services||[])];
+  epMedia=[...(b.media||[])];
+  renderEpSvcs();
+  renderEpThumbs();
+}
+
+function renderEpSvcs(){
+  const el=document.getElementById('ep-svc-list');
+  if(!el)return;
+  el.innerHTML=epSvcs.map((s,i)=>'<div class="svc-item">'+s.name+' — €'+s.price+'<button onclick="epSvcs.splice('+i+',1);renderEpSvcs()">✕</button></div>').join('');
+}
+
+function addEpSvc(){
+  const name=document.getElementById('ep-svc-name').value.trim();
+  const price=parseFloat(document.getElementById('ep-svc-price').value);
+  if(!name||!price){toast('❌ Vul dienst en prijs in.');return}
+  epSvcs.push({name,price});
+  document.getElementById('ep-svc-name').value='';
+  document.getElementById('ep-svc-price').value='';
+  renderEpSvcs();
+}
+
+function renderEpThumbs(){
+  const el=document.getElementById('ep-thumbs');
+  if(!el)return;
+  el.innerHTML=epMedia.map((s,i)=>'<div class="m-thumb"><img src="'+s+'" alt=""><div class="m-del" onclick="epMedia.splice('+i+',1);renderEpThumbs()">✕</div></div>').join('');
+}
+
+function handleEpUpload(e){
+  [...e.target.files].slice(0,6-epMedia.length).forEach(f=>{
+    const rd=new FileReader();
+    rd.onload=ev=>{epMedia.push(ev.target.result);renderEpThumbs()};
+    rd.readAsDataURL(f);
+  });
+}
+
+function saveProfile(){
+  if(!activeKd||!currentUser){toast('❌ Niet ingelogd.');return}
+  const naam=document.getElementById('ep-naam').value.trim();
+  if(!naam){toast('❌ Vul je naam in.');return}
+  const br=barbers.find(x=>x.id===activeKd.id);
+  if(!br){toast('❌ Kapper niet gevonden.');return}
+  br.naam=naam;
+  br.anaam=document.getElementById('ep-anaam').value.trim();
+  br.titel=document.getElementById('ep-titel').value.trim()||naam+' · '+br.stad;
+  br.bio=document.getElementById('ep-bio').value.trim();
+  br.tel=document.getElementById('ep-tel').value.trim();
+  br.insta=document.getElementById('ep-insta').value.trim();
+  if(epSvcs.length)br.services=epSvcs;
+  if(epMedia.length)br.media=epMedia;
+  if(epColor)br.kleur=epColor;
+  // Update account name
+  const accounts=DB.l('accounts',[]);
+  const acc=accounts.find(a=>a.barberId===activeKd.id);
+  if(acc){acc.naam=br.naam+' '+br.anaam;DB.s('accounts',accounts);}
+  DB.s('barbers',barbers);
+  activeKd=br;
+  doFilter();
+  toast('✅ Profiel opgeslagen!');
+  // Update dashboard title
+  document.getElementById('kd-title').textContent=br.naam+' '+br.anaam+' — Dashboard';
+}
+
 function cancelBk(id){
   if(!confirm('Weet je zeker dat je deze afspraak wil annuleren?\n\nDe klant wordt niet automatisch geïnformeerd — stuur zelf even een berichtje!'))return;
   bookings=bookings.filter(x=>x.id!==id);
@@ -1393,11 +1684,11 @@ function openMyDash(){
 }
 
 function copyBookingLink(id,e){
-  e.stopPropagation();
+  if(e)e.stopPropagation();
   const b=barbers.find(x=>x.id===id);if(!b)return;
   const url=window.location.origin+window.location.pathname+'?kapper='+id;
-  navigator.clipboard.writeText(url).then(()=>toast('🔗 Link gekopieerd! Deel dit met klanten.')).catch(()=>{
-    prompt('Kopieer deze link:',url);
+  navigator.clipboard.writeText(url).then(()=>toast('🔗 Jouw persoonlijke paginalink gekopieerd!')).catch(()=>{
+    prompt('Kopieer jouw persoonlijke link:',url);
   });
 }
 
@@ -1406,8 +1697,100 @@ function checkDirectLink(){
   const kapperId=params.get('kapper');
   if(kapperId){
     const b=barbers.find(x=>x.id===kapperId);
-    if(b){setTimeout(()=>{openBk(kapperId);},600);}
+    if(b){
+      // Show dedicated barber page instead of full site
+      showBarberPage(b);
+    } else {
+      // Barber not found - might be new, wait for DB load
+      setTimeout(()=>{
+        const b2=barbers.find(x=>x.id===kapperId);
+        if(b2) showBarberPage(b2);
+      },800);
+    }
   }
+}
+
+function showBarberPage(b){
+  const ini=(b.naam[0]+(b.anaam?b.anaam[0]:'')).toUpperCase();
+  const st='★'.repeat(Math.round(b.rating||5))+'☆'.repeat(5-Math.round(b.rating||5));
+  const rvs=reviews.filter(x=>x.barberId===b.id);
+  const typeLbl=b.type==='man'?'Mannenkapper':b.type==='vrouw'?'Vrouwenkapper':'Unisex';
+  const tc=b.type==='man'?'type-man':b.type==='vrouw'?'type-vrouw':'type-unisex';
+  
+  const page=document.createElement('div');
+  page.id='barber-page';
+  page.style.cssText='position:fixed;inset:0;background:var(--bg);z-index:950;overflow-y:auto;padding-top:64px';
+  
+  page.innerHTML=`
+    <div style="max-width:680px;margin:0 auto;padding:2rem 1.5rem">
+      
+      <button onclick="document.getElementById('barber-page').remove()" 
+        style="background:none;border:1px solid var(--border);color:var(--gray);padding:.4rem .9rem;font-size:.72rem;cursor:pointer;margin-bottom:1.5rem;font-family:'DM Sans',sans-serif">
+        ← Terug naar ZJK
+      </button>
+
+      <div style="background:var(--card);border:1px solid var(--border);overflow:hidden;margin-bottom:1.2rem">
+        ${b.media&&b.media.length
+          ? `<div style="height:220px;overflow:hidden"><img src="${b.media[0]}" style="width:100%;height:100%;object-fit:cover"></div>`
+          : `<div style="height:160px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:4rem">💈</div>`}
+        <div style="padding:1.5rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem">
+            <div style="width:58px;height:58px;border-radius:50%;background:${b.kleur};display:flex;align-items:center;justify-content:center;font-family:var(--ff-display);font-size:1.4rem;color:#000;flex-shrink:0;border:2px solid ${b.kleur}">${ini}</div>
+            <div>
+              <h2 style="font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:.2rem">${b.naam} ${b.anaam}</h2>
+              <div style="font-size:.7rem;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:.3rem">${b.titel}</div>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <span style="color:var(--gold);font-size:.8rem">${st}</span>
+                <span style="font-size:.72rem;color:var(--gray)">(${rvs.length} reviews)</span>
+                <span class="bc-type ${tc}" style="font-size:.58rem">${typeLbl}</span>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:.87rem;color:var(--gray);line-height:1.8;margin-bottom:1.2rem">${b.bio}</p>
+          ${b.insta?`<a href="https://instagram.com/${b.insta.replace('@','')}" target="_blank" style="font-size:.78rem;color:var(--gold);text-decoration:none">📸 ${b.insta}</a>`:''}
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.2rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">💈 DIENSTEN & PRIJZEN</div>
+        ${(b.services||[]).map(s=>`
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--border)">
+            <span style="font-size:.88rem">${s.name}</span>
+            <span style="font-family:var(--ff-display);font-size:1.2rem;color:var(--gold)">€${s.price}</span>
+          </div>`).join('')}
+      </div>
+
+      ${b.media&&b.media.length>1?`
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.2rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">📸 WERK FOTO'S</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem">
+          ${b.media.map(src=>`<div style="aspect-ratio:1;overflow:hidden"><img src="${src}" style="width:100%;height:100%;object-fit:cover;cursor:pointer" onclick="openFullImg('${src}')"></div>`).join('')}
+        </div>
+      </div>`:''}
+
+      ${rvs.length?`
+      <div style="background:var(--card);border:1px solid var(--border);padding:1.5rem;margin-bottom:1.2rem">
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem">⭐ REVIEWS (${rvs.length})</div>
+        ${rvs.slice(-3).reverse().map(r=>`
+          <div style="padding:.8rem 0;border-bottom:1px solid var(--border)">
+            <div style="color:var(--gold);font-size:.8rem;margin-bottom:.3rem">${'★'.repeat(r.stars||5)}</div>
+            <p style="font-size:.82rem;color:var(--gray);font-style:italic;margin-bottom:.3rem">"${r.text}"</p>
+            <div style="font-size:.7rem;color:var(--gray2)">${r.naam}</div>
+          </div>`).join('')}
+      </div>`:''}
+
+      <button onclick="activeBrb=barbers.find(x=>x.id==='${b.id}');document.getElementById('barber-page').style.display='none';openBk('${b.id}')" 
+        style="width:100%;background:var(--gold);color:#000;border:none;padding:1.1rem;font-family:'DM Sans',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-bottom:.8rem">
+        📅 AFSPRAAK MAKEN
+      </button>
+      <button onclick="openReviewModal('${b.id}')"
+        style="width:100%;background:transparent;color:var(--white);border:1px solid var(--border);padding:.85rem;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer">
+        ⭐ REVIEW SCHRIJVEN
+      </button>
+    </div>
+  `;
+  document.body.appendChild(page);
+  window.scrollTo(0,0);
 }
 function toggleNav(){
   const nl=document.querySelector('.navl');
@@ -1415,6 +1798,113 @@ function toggleNav(){
 }
 
 // ══════════════ INIT ══════════════
+// ══════════════ HERINNERINGEN ══════════════
+
+function copyReminder(msgOrEl){
+  const msg=typeof msgOrEl==='string'?msgOrEl:(msgOrEl.dataset?msgOrEl.dataset.msg:msgOrEl);
+  navigator.clipboard.writeText(msg)
+    .then(()=>toast('📋 Herinnering gekopieerd! Plak het in WhatsApp.'))
+    .catch(()=>prompt('Kopieer dit bericht:',msg));
+}
+
+function saveReminderTemplate(){
+  if(!currentUser)return;
+  const tmpl=document.getElementById('reminder-template').value;
+  const all=DB.l('remindertmpls',{});
+  all[currentUser.barberId]=tmpl;
+  DB.s('remindertmpls',all);
+  toast('✅ Herinneringstekst opgeslagen!');
+}
+
+function getReminderTemplate(barberId){
+  const all=DB.l('remindertmpls',{});
+  return all[barberId]||'Hallo {naam}! Even een herinnering: je hebt een afspraak bij mij op {datum} om {tijd}. Niet kunnen? Stuur me even een berichtje! 💈 - {kapper}';
+}
+
+function fillTemplate(tmpl,booking,kapperNaam){
+  return tmpl
+    .replace(/{naam}/g, booking.naam)
+    .replace(/{datum}/g, booking.datum||'')
+    .replace(/{tijd}/g, booking.tijd||'')
+    .replace(/{dienst}/g, booking.dienst||'')
+    .replace(/{kapper}/g, kapperNaam||'');
+}
+
+function renderUpcomingReminders(){
+  if(!activeKd)return;
+  const el=document.getElementById('upcoming-reminders');
+  if(!el)return;
+  const now=new Date();
+  const tomorrow=new Date(now);tomorrow.setDate(tomorrow.getDate()+1);
+  const dayAfter=new Date(now);dayAfter.setDate(dayAfter.getDate()+2);
+  const fmt=function(d){return d.toISOString().split('T')[0];};
+  const upcoming=bookings.filter(function(b){
+    return b.barberId===activeKd.id&&(b.datum===fmt(tomorrow)||b.datum===fmt(dayAfter));
+  });
+  if(!upcoming.length){
+    el.innerHTML='<p style="font-size:.78rem;color:var(--gray2)">Geen afspraken de komende 2 dagen.</p>';
+    return;
+  }
+  const tmpl=getReminderTemplate(activeKd.id);
+  const kapperNaam=activeKd.naam+' '+activeKd.anaam;
+  let html='';
+  upcoming.forEach(function(b){
+    const msg=fillTemplate(tmpl,b,kapperNaam);
+    const tel=b.tel?b.tel.replace(/[^0-9]/g,''):'';
+    const waUrl=tel?'https://wa.me/'+tel+'?text='+encodeURIComponent(msg):'';
+    const isToday=b.datum===fmt(tomorrow);
+    const tagStyle=isToday
+      ?'background:rgba(240,69,90,.15);color:var(--red);border:1px solid rgba(240,69,90,.3)'
+      :'background:var(--gold3);color:var(--gold);border:1px solid rgba(212,168,67,.3)';
+    const tagLabel=isToday?'MORGEN':'OVERMORGEN';
+    html+='<div style="display:flex;align-items:center;gap:.7rem;padding:.7rem;background:var(--dark);border:1px solid var(--border);margin-bottom:.4rem;flex-wrap:wrap">'
+      +'<div style="flex:1;min-width:120px">'
+      +'<div style="font-size:.82rem;font-weight:600">'+b.naam+' '+b.anaam+'</div>'
+      +'<div style="font-size:.7rem;color:var(--gray)">'+b.datum+' om '+b.tijd+' · '+b.dienst+'</div>'
+      +'<span style="font-size:.63rem;font-weight:700;padding:.15rem .45rem;'+tagStyle+'">'+tagLabel+'</span>'
+      +'</div>'
+      +(waUrl?'<a href="'+waUrl+'" target="_blank" class="reminder-btn reminder-wa">💬 WhatsApp</a>':'<span style="font-size:.7rem;color:var(--gray2)">Geen tel.</span>')
+      +'<button class="reminder-btn reminder-copy" onclick="copyReminder(this.dataset.msg)" data-msg="'+msg.replace(/"/g,'&quot;')+'">📋 Kopieer</button>'
+      +'</div>';
+  });
+  el.innerHTML=html;
+}
+function requestNotifPermission(){
+  if(!('Notification' in window)){
+    toast('❌ Browser ondersteunt geen notificaties.');
+    return;
+  }
+  Notification.requestPermission().then(perm=>{
+    if(perm==='granted'){
+      toast('✅ Notificaties ingeschakeld! Je krijgt een melding bij nieuwe boekingen.');
+      const banner=document.getElementById('notif-banner');
+      if(banner)banner.innerHTML='<p style="font-size:.78rem;color:var(--green)">✅ Push notificaties zijn ingeschakeld. Je ontvangt meldingen bij nieuwe boekingen.</p>';
+      DB.s('notif_'+currentUser?.barberId,true);
+    } else {
+      toast('❌ Notificaties geweigerd. Pas dit aan in je browserinstellingen.');
+    }
+  });
+}
+
+function checkNotifStatus(){
+  if(!currentUser)return;
+  const enabled=DB.l('notif_'+currentUser.barberId,false);
+  const banner=document.getElementById('notif-banner');
+  if(!banner)return;
+  if(enabled||Notification?.permission==='granted'){
+    banner.innerHTML='<p style="font-size:.78rem;color:var(--green)">✅ Push notificaties zijn ingeschakeld.</p>';
+  }
+}
+
+function sendNewBookingNotif(kapperNaam,klantNaam,datum,tijd){
+  if(Notification?.permission==='granted'){
+    new Notification('💈 Nieuwe boeking! — ZJK', {
+      body: klantNaam+' boekte een afspraak op '+datum+' om '+tijd,
+      icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23d4a843"/><text y=".9em" font-size="80">💈</text></svg>'
+    });
+  }
+}
+
 // ══════════════ AGENDA SYSTEEM ══════════════
 const DAGEN=['Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag','Zondag'];
 const DAGEN_SHORT=['ma','di','wo','do','vr','za','zo'];
@@ -1577,6 +2067,9 @@ function selectSlot(el,tijd){
   document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
   el.classList.add('selected');
   document.getElementById('bk-tijd').value=tijd;
+  // Check if this slot is actually booked (should not happen since we hide them, but double check)
+  const waitlistOpt=document.getElementById('waitlist-option');
+  if(waitlistOpt)waitlistOpt.style.display='none';
   updateHerhalingInfo();
 }
 
@@ -1598,6 +2091,467 @@ function updateHerhalingInfo(){
   const labels={weekly:'week',biweekly:'2 weken',monthly:'maand'};
   info.style.display='block';
   info.textContent=`✅ Jouw afspraak wordt ${n}x herhaald, elke ${labels[val]} op ${datum.split('-').reverse().join('-')} om ${tijd}. Je ontvangt een bevestiging en kan altijd annuleren.`;
+}
+
+
+// ══════════════ KLANT ANNULEREN ══════════════
+function generateCancelToken(bookingId){
+  return btoa(bookingId + '_cancel_' + Date.now()).replace(/=/g,'');
+}
+
+function getCancelUrl(booking){
+  const token = generateCancelToken(booking.id);
+  // Store token
+  const tokens = DB.l('cancel_tokens',{});
+  tokens[token] = booking.id;
+  DB.s('cancel_tokens', tokens);
+  return window.location.origin + window.location.pathname + '?cancel=' + token;
+}
+
+function checkCancelLink(){
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('cancel');
+  if(!token) return;
+  
+  const tokens = DB.l('cancel_tokens',{});
+  const bookingId = tokens[token];
+  if(!bookingId){
+    showCancelPage('❌ Deze annuleringslink is niet geldig of al gebruikt.', false);
+    return;
+  }
+  
+  const booking = bookings.find(b => b.id === bookingId);
+  if(!booking){
+    showCancelPage('❌ Afspraak niet gevonden. Mogelijk al geannuleerd.', false);
+    return;
+  }
+  
+  const barber = barbers.find(b => b.id === booking.barberId);
+  showCancelPage(null, true, booking, barber, token);
+}
+
+function showCancelPage(errorMsg, success, booking, barber, token){
+  const page = document.createElement('div');
+  page.className = 'cancel-page';
+  const card = document.createElement('div');
+  card.className = 'cancel-card';
+  
+  if(!success || errorMsg){
+    card.innerHTML = '<div style="font-size:3rem;margin-bottom:1rem">&#10060;</div>';
+    const h = document.createElement('h3');
+    h.style.cssText = 'font-family:var(--ff-display);font-size:1.6rem;margin-bottom:1rem';
+    h.textContent = 'ANNULERING';
+    const p = document.createElement('p');
+    p.style.cssText = 'color:var(--gray);font-size:.9rem';
+    p.textContent = errorMsg;
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-o';
+    btn.style.marginTop = '1.5rem';
+    btn.textContent = '← Terug';
+    btn.onclick = function(){ page.remove(); };
+    card.appendChild(h);card.appendChild(p);card.appendChild(btn);
+  } else {
+    const h = document.createElement('h3');
+    h.style.cssText = 'font-family:var(--ff-display);font-size:1.6rem;margin-bottom:.5rem;letter-spacing:1px';
+    h.textContent = 'AFSPRAAK ANNULEREN';
+    card.innerHTML = '<div style="font-size:3rem;margin-bottom:1rem">&#128197;</div>';
+    card.appendChild(h);
+    
+    const subp = document.createElement('p');
+    subp.style.cssText = 'color:var(--gray);font-size:.85rem;margin-bottom:1.5rem';
+    subp.textContent = 'Weet je zeker dat je deze afspraak wil annuleren?';
+    card.appendChild(subp);
+    
+    const info = document.createElement('div');
+    info.style.cssText = 'background:var(--dark);border:1px solid var(--border);padding:1.2rem;margin-bottom:1.5rem;text-align:left';
+    info.innerHTML = '<div style="font-size:.9rem;font-weight:600;margin-bottom:.3rem">'+booking.naam+' '+booking.anaam+'</div>'
+      +'<div style="font-size:.82rem;color:var(--gray)">'+booking.dienst+'</div>'
+      +'<div style="font-size:.82rem;color:var(--gold);margin-top:.3rem">'+booking.datum+' om '+booking.tijd+'</div>'
+      +(barber?'<div style="font-size:.78rem;color:var(--gray);margin-top:.3rem">bij '+barber.naam+' '+barber.anaam+'</div>':'');
+    card.appendChild(info);
+    
+    const btns = document.createElement('div');
+    btns.style.cssText = 'display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap';
+    
+    const confirmBtn = document.createElement('button');
+    confirmBtn.className = 'btn btn-g';
+    confirmBtn.innerHTML = '&#128465;&#65039; Ja, annuleer afspraak';
+    confirmBtn.onclick = function(){ confirmCancel(token, booking.id, confirmBtn); };
+    
+    const backBtn = document.createElement('button');
+    backBtn.className = 'btn btn-o';
+    backBtn.textContent = '← Nee, ga terug';
+    backBtn.onclick = function(){ page.remove(); };
+    
+    btns.appendChild(confirmBtn);btns.appendChild(backBtn);
+    card.appendChild(btns);
+  }
+  page.appendChild(card);
+  document.body.appendChild(page);
+}
+function confirmCancel(token, bookingId, btn){
+  bookings = bookings.filter(function(b){ return b.id !== bookingId; });
+  DB.s('bookings', bookings);
+  const tokens = DB.l('cancel_tokens',{});
+  delete tokens[token];
+  DB.s('cancel_tokens', tokens);
+  updStats();
+  
+  const card = btn.closest('.cancel-card');
+  card.innerHTML = '';
+  
+  const icon = document.createElement('div');
+  icon.style.cssText = 'font-size:3rem;margin-bottom:1rem';
+  icon.textContent = '✅';
+  
+  const h = document.createElement('h3');
+  h.style.cssText = 'font-family:var(--ff-display);font-size:1.6rem;color:var(--green);margin-bottom:1rem';
+  h.textContent = 'GEANNULEERD';
+  
+  const p = document.createElement('p');
+  p.style.cssText = 'color:var(--gray);font-size:.88rem;margin-bottom:1.5rem';
+  p.textContent = 'Je afspraak is geannuleerd. De kapper is op de hoogte gebracht.';
+  
+  const backBtn = document.createElement('button');
+  backBtn.className = 'btn btn-g';
+  backBtn.textContent = '← Terug naar ZJK';
+  backBtn.onclick = function(){ btn.closest('.cancel-page').remove(); };
+  
+  card.appendChild(icon);card.appendChild(h);card.appendChild(p);card.appendChild(backBtn);
+}
+
+// ══════════════ SLIM SLOT SUGGESTIE ══════════════
+function getPreferredSlot(barberId, tel){
+  if(!tel) return null;
+  const key = 'pref_'+barberId+'_'+tel.replace(/[^0-9]/g,'');
+  return DB.l(key, null);
+}
+
+function savePreferredSlot(barberId, tel, tijd){
+  if(!tel) return;
+  const key = 'pref_'+barberId+'_'+tel.replace(/[^0-9]/g,'');
+  DB.s(key, {tijd, count: (DB.l(key,{count:0}).count||0)+1});
+}
+
+function showSlotSuggestion(){
+  const tel = document.getElementById('bk-tel')?.value?.trim();
+  if(!tel || !activeBrb) return;
+  const pref = getPreferredSlot(activeBrb.id, tel);
+  if(!pref || pref.count < 2) return;
+  
+  const existing = document.getElementById('slot-suggestion');
+  if(existing) existing.remove();
+  
+    const hint = document.createElement('div');
+  hint.id = 'slot-suggestion';
+  hint.style.cssText = 'background:rgba(212,168,67,.06);border:1px solid rgba(212,168,67,.2);padding:.7rem 1rem;margin-bottom:.6rem;font-size:.78rem;color:var(--gray);display:flex;align-items:center;gap:.6rem;flex-wrap:wrap';
+  
+  const hintText = document.createElement('span');
+  hintText.innerHTML = '⚡ Je boekt altijd om <strong style="color:var(--gold)">'+pref.tijd+'</strong> — zelfde tijd weer?';
+  
+  const hintBtn = document.createElement('button');
+  hintBtn.className = 'btn btn-g btn-sm';
+  hintBtn.textContent = 'Ja, gebruik '+pref.tijd;
+  hintBtn.onclick = function(){ usePreferredSlot(pref.tijd); };
+  
+  hint.appendChild(hintText);
+  hint.appendChild(hintBtn);
+  
+  const datumGroup = document.getElementById('bk-datum')?.closest('.fr2');
+  if(datumGroup) datumGroup.before(hint);
+}
+
+function usePreferredSlot(tijd){
+  document.getElementById('bk-tijd').value = tijd;
+  const hint = document.getElementById('slot-suggestion');
+  if(hint) hint.innerHTML = '✅ <span style="color:var(--green)">Tijd ingesteld op <strong>'+tijd+'</strong></span>';
+  updateHerhalingInfo();
+}
+
+// ══════════════ BOOK AGAIN ══════════════
+function renderBookAgain(){
+  if(!activeKd) return;
+  const el = document.getElementById('kd-book-again');
+  if(!el) return;
+  
+  const bks = bookings.filter(b => b.barberId === activeKd.id);
+  const now = new Date();
+  const cutoff = new Date(now);
+  cutoff.setDate(cutoff.getDate() - 21); // 3 weeks ago
+  
+  // Group by klant, find those who haven't been in 3+ weeks
+  const klanten = {};
+  bks.forEach(b => {
+    const key = b.tel || b.naam+'_'+b.anaam;
+    if(!klanten[key]) klanten[key] = {naam:b.naam, anaam:b.anaam, tel:b.tel, lastDate:'', dienst:''};
+    if(!klanten[key].lastDate || b.datum > klanten[key].lastDate){
+      klanten[key].lastDate = b.datum;
+      klanten[key].dienst = b.dienst;
+    }
+  });
+  
+  const overdue = Object.values(klanten).filter(k => {
+    if(!k.lastDate) return false;
+    return new Date(k.lastDate) < cutoff;
+  }).sort((a,b) => a.lastDate < b.lastDate ? 1 : -1).slice(0,8);
+  
+  if(!overdue.length){
+    el.innerHTML = '<p style="font-size:.78rem;color:var(--gray2)">Geen klanten die al lang niet zijn geweest. Goed bezig! 💪</p>';
+    return;
+  }
+  
+  const kapperNaam = activeKd.naam + ' ' + activeKd.anaam;
+  el.innerHTML = overdue.map(k => {
+    const tel = k.tel ? k.tel.replace(/[^0-9]/g,'') : '';
+    const dagen = Math.floor((now - new Date(k.lastDate)) / 86400000);
+    const msg = 'Hey '+k.naam+'! Al '+dagen+' dagen geweest. Tijd voor een nieuwe cut? Boek snel je plek bij '+kapperNaam+' 💈 '+window.location.origin+window.location.pathname+'?kapper='+activeKd.id;
+    const waUrl = tel ? 'https://wa.me/'+tel+'?text='+encodeURIComponent(msg) : '';
+    return '<div class="contact-card">'
+      +'<div class="contact-av" style="background:rgba(212,168,67,.2);color:var(--gold)">'+k.naam[0].toUpperCase()+'</div>'
+      +'<div class="contact-info">'
+      +'<div class="contact-name">'+k.naam+' '+k.anaam+'</div>'
+      +'<div class="contact-sub">Laatste bezoek: '+k.lastDate+' ('+dagen+' dagen geleden) · '+k.dienst+'</div>'
+      +'</div>'
+      +'<div class="contact-actions">'
+      +(waUrl?'<a href="'+waUrl+'" target="_blank" class="reminder-btn reminder-wa" style="text-decoration:none;font-size:.65rem">💬 Book Again</a>':'<span style="font-size:.7rem;color:var(--gray2)">Geen tel.</span>')
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+// ══════════════ PROFIEL KLEUR PICKER ══════════════
+let epColor = '';
+function pickEpCol(el){
+  document.querySelectorAll('.kc').forEach(c => c.classList.remove('sel'));
+  el.classList.add('sel');
+  epColor = el.dataset.c;
+}
+
+function loadEpColorPicker(){
+  if(!activeKd) return;
+  epColor = activeKd.kleur || '#d4a843';
+  document.querySelectorAll('.kc').forEach(el => {
+    el.classList.toggle('sel', el.dataset.c === epColor);
+  });
+}
+
+// ══════════════ LOCATIE ══════════════
+let userLat=null, userLng=null;
+
+function getLocation(){
+  if(!navigator.geolocation){toast('❌ Locatie niet beschikbaar in deze browser.');return;}
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      userLat=pos.coords.latitude;
+      userLng=pos.coords.longitude;
+      DB.s('userloc',{lat:userLat,lng:userLng});
+      document.getElementById('loc-banner').innerHTML='<span style="font-size:1.2rem">✅</span><p style="font-size:.78rem;color:var(--green)"><strong>Locatie gevonden!</strong><small>Kappers worden gesorteerd op afstand van jou</small></p>';
+      doFilter();
+      toast('📍 Locatie opgeslagen! Kappers gesorteerd op afstand.');
+    },
+    ()=>toast('❌ Kon locatie niet bepalen. Controleer je instellingen.')
+  );
+}
+
+function distanceKm(lat1,lng1,lat2,lng2){
+  if(!lat1||!lat2)return 9999;
+  const R=6371;
+  const dLat=(lat2-lat1)*Math.PI/180;
+  const dLng=(lat2-lng1)*Math.PI/180;
+  const a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)*Math.sin(dLng/2);
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+
+// City coordinates for distance estimation
+const CITY_COORDS={
+  'Amsterdam':{lat:52.3676,lng:4.9041},
+  'Rotterdam':{lat:51.9225,lng:4.4792},
+  'Den Haag':{lat:52.0705,lng:4.3007},
+  'Utrecht':{lat:52.0907,lng:5.1214},
+  'Eindhoven':{lat:51.4416,lng:5.4697},
+  'Breda':{lat:51.5719,lng:4.7683},
+  'Tilburg':{lat:51.5555,lng:5.0913},
+  'Groningen':{lat:53.2194,lng:6.5665}
+};
+
+// ══════════════ STATISTIEKEN ══════════════
+let statPeriod='week';
+
+function setStatPeriod(period,el){
+  statPeriod=period;
+  document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));
+  if(el)el.classList.add('active');
+  renderStats();
+}
+
+function renderStats(){
+  if(!activeKd)return;
+  const el=document.getElementById('kd-stats');
+  if(!el)return;
+  const now=new Date();
+  const bks=bookings.filter(b=>b.barberId===activeKd.id);
+  
+  let labels=[], counts=[], revenues=[];
+  
+  if(statPeriod==='week'){
+    for(let i=6;i>=0;i--){
+      const d=new Date(now);d.setDate(d.getDate()-i);
+      const key=d.toISOString().split('T')[0];
+      const dayBks=bks.filter(b=>b.datum===key);
+      labels.push(['Zo','Ma','Di','Wo','Do','Vr','Za'][d.getDay()]);
+      counts.push(dayBks.length);
+      revenues.push(dayBks.reduce((s,b)=>s+(b.prijs||0),0));
+    }
+  } else if(statPeriod==='maand'){
+    for(let i=3;i>=0;i--){
+      const d=new Date(now.getFullYear(),now.getMonth()-i,1);
+      const maandBks=bks.filter(b=>{
+        if(!b.datum)return false;
+        const bd=new Date(b.datum);
+        return bd.getFullYear()===d.getFullYear()&&bd.getMonth()===d.getMonth();
+      });
+      labels.push(['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'][d.getMonth()]);
+      counts.push(maandBks.length);
+      revenues.push(maandBks.reduce((s,b)=>s+(b.prijs||0),0));
+    }
+  } else {
+    for(let i=11;i>=0;i--){
+      const d=new Date(now.getFullYear(),now.getMonth()-i,1);
+      const mBks=bks.filter(b=>{
+        if(!b.datum)return false;
+        const bd=new Date(b.datum);
+        return bd.getFullYear()===d.getFullYear()&&bd.getMonth()===d.getMonth();
+      });
+      labels.push(['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'][d.getMonth()]);
+      counts.push(mBks.length);
+      revenues.push(mBks.reduce((s,b)=>s+(b.prijs||0),0));
+    }
+  }
+  
+  const maxCount=Math.max(...counts,1);
+  const maxRev=Math.max(...revenues,1);
+  const totBks=counts.reduce((a,b)=>a+b,0);
+  const totRev=revenues.reduce((a,b)=>a+b,0);
+  
+  let html='<div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem">';
+  html+='<div style="background:var(--dark);padding:1rem;text-align:center"><div style="font-family:var(--ff-display);font-size:2rem;color:var(--gold)">'+totBks+'</div><div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)">Boekingen</div></div>';
+  html+='<div style="background:var(--dark);padding:1rem;text-align:center"><div style="font-family:var(--ff-display);font-size:2rem;color:var(--gold)">€'+totRev+'</div><div style="font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray)">Omzet</div></div>';
+  html+='</div>';
+  
+  html+='<div style="font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray2);margin-bottom:.5rem">AFSPRAKEN PER '+(statPeriod==='week'?'DAG':statPeriod==='maand'?'MAAND':'MAAND')+'</div>';
+  labels.forEach((lbl,i)=>{
+    const pct=Math.round((counts[i]/maxCount)*100);
+    html+='<div class="stat-bar-wrap">';
+    html+='<div class="stat-bar-label"><span>'+lbl+'</span><span>'+counts[i]+' afspraken · €'+revenues[i]+'</span></div>';
+    html+='<div class="stat-bar-bg"><div class="stat-bar-fill" style="width:'+pct+'%"></div></div>';
+    html+='</div>';
+  });
+  
+  el.innerHTML=html;
+  
+  // Popular services
+  const svcEl=document.getElementById('kd-popular-services');
+  if(svcEl){
+    const svcCount={};
+    bks.forEach(b=>{if(b.dienst)svcCount[b.dienst]=(svcCount[b.dienst]||0)+1;});
+    const sorted=Object.entries(svcCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+    const maxSvc=sorted.length?sorted[0][1]:1;
+    svcEl.innerHTML=sorted.map(([svc,cnt])=>{
+      const pct=Math.round((cnt/maxSvc)*100);
+      return '<div class="stat-bar-wrap"><div class="stat-bar-label"><span>'+svc+'</span><span>'+cnt+'x</span></div><div class="stat-bar-bg"><div class="stat-bar-fill" style="width:'+pct+'%;background:var(--blue)"></div></div></div>';
+    }).join('')||'<p style="font-size:.78rem;color:var(--gray2)">Nog geen data.</p>';
+  }
+}
+
+// ══════════════ VASTE KLANTEN ══════════════
+function renderContacts(){
+  if(!activeKd)return;
+  const el=document.getElementById('kd-contacts');
+  if(!el)return;
+  const bks=bookings.filter(b=>b.barberId===activeKd.id);
+  
+  // Group by tel number
+  const klanten={};
+  bks.forEach(b=>{
+    const key=b.tel||b.email||b.naam+'_'+b.anaam;
+    if(!klanten[key]){
+      klanten[key]={naam:b.naam,anaam:b.anaam,tel:b.tel,email:b.email,count:0,lastDate:'',lastDienst:''};
+    }
+    klanten[key].count++;
+    if(!klanten[key].lastDate||b.datum>klanten[key].lastDate){
+      klanten[key].lastDate=b.datum;
+      klanten[key].lastDienst=b.dienst;
+    }
+  });
+  
+  const sorted=Object.values(klanten).sort((a,b)=>b.count-a.count);
+  
+  if(!sorted.length){
+    el.innerHTML='<p style="font-size:.78rem;color:var(--gray2)">Nog geen klanten. Na de eerste boeking zie je ze hier.</p>';
+    return;
+  }
+  
+  el.innerHTML=sorted.slice(0,15).map(k=>{
+    const ini=(k.naam[0]+(k.anaam?k.anaam[0]:'')).toUpperCase();
+    const tel=k.tel?k.tel.replace(/[^0-9]/g,''):'';
+    const waUrl=tel?'https://wa.me/'+tel:'';
+    const isVast=k.count>=2;
+    return '<div class="contact-card">'
+      +'<div class="contact-av">'+ini+'</div>'
+      +'<div class="contact-info">'
+      +'<div class="contact-name">'+k.naam+' '+k.anaam+(isVast?' <span style="font-size:.6rem;background:var(--gold3);color:var(--gold);border:1px solid rgba(212,168,67,.3);padding:.1rem .4rem;font-weight:700">VAST</span>':'')+'</div>'
+      +'<div class="contact-sub">'+k.count+'x geweest · Laatste: '+k.lastDienst+' op '+k.lastDate+'</div>'
+      +'</div>'
+      +'<div class="contact-actions">'
+      +(waUrl?'<a href="'+waUrl+'" target="_blank" class="reminder-btn reminder-wa" style="text-decoration:none">💬</a>':'')
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+// ══════════════ WACHTLIJST ══════════════
+function renderWaitlist(){
+  if(!activeKd)return;
+  const el=document.getElementById('kd-waitlist');
+  if(!el)return;
+  const wl=DB.l('waitlist_'+activeKd.id,[]);
+  
+  if(!wl.length){
+    el.innerHTML='<p style="font-size:.78rem;color:var(--gray2)">Niemand op de wachtlijst.</p>';
+    return;
+  }
+  
+  el.innerHTML=wl.map((w,i)=>{
+    const tel=w.tel?w.tel.replace(/[^0-9]/g,''):'';
+    const msg='Hallo '+w.naam+'! Er is een plek vrijgekomen op '+w.datum+' om '+w.tijd+'. Wil je die reserveren? - '+activeKd.naam;
+    const waUrl=tel?'https://wa.me/'+tel+'?text='+encodeURIComponent(msg):'';
+    return '<div class="contact-card">'
+      +'<div class="contact-av" style="background:orange;color:#000">'+w.naam[0].toUpperCase()+'</div>'
+      +'<div class="contact-info">'
+      +'<div class="contact-name">'+w.naam+' '+w.anaam+'</div>'
+      +'<div class="contact-sub">Wacht op: '+w.datum+' om '+w.tijd+' · '+w.dienst+'</div>'
+      +'</div>'
+      +'<div class="contact-actions">'
+      +(waUrl?'<a href="'+waUrl+'" target="_blank" class="reminder-btn reminder-wa" style="text-decoration:none;font-size:.65rem">💬 Stuur plek</a>':'')
+      +'<button class="reminder-btn" style="background:rgba(240,69,90,.1);color:var(--red);border:1px solid rgba(240,69,90,.3)" onclick="removeWaitlist('+i+')">✕</button>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function removeWaitlist(i){
+  if(!activeKd)return;
+  const wl=DB.l('waitlist_'+activeKd.id,[]);
+  wl.splice(i,1);
+  DB.s('waitlist_'+activeKd.id,wl);
+  renderWaitlist();
+  toast('✅ Van wachtlijst verwijderd.');
+}
+
+function addToWaitlist(barberId,booking){
+  const wl=DB.l('waitlist_'+barberId,[]);
+  wl.push(booking);
+  DB.s('waitlist_'+barberId,wl);
 }
 
 // ══════════════ AUTH SYSTEEM ══════════════
@@ -1723,7 +2677,21 @@ function checkSession(){
 }
 
 window.addEventListener('load',()=>{
-  renderStory();doFilter();renderReviews();updStats();checkDirectLink();checkSession();
+  renderStory();doFilter();renderReviews();updStats();checkDirectLink();checkSession();checkCancelLink();
+  // Load saved location
+  const savedLoc=DB.l('userloc',null);
+  if(savedLoc&&savedLoc.lat){
+    userLat=savedLoc.lat;userLng=savedLoc.lng;
+    const banner=document.getElementById('loc-banner');
+    if(banner){
+      banner.innerHTML='<span>✅</span><p style="font-size:.78rem;color:var(--green)"><strong>Locatie actief</strong><small style="display:block">Gesorteerd op afstand</small></p>';
+      const disBtn=document.createElement('button');
+      disBtn.className='btn btn-o btn-sm';disBtn.textContent='Uitschakelen';
+      disBtn.onclick=function(){userLat=null;userLng=null;DB.s('userloc',null);doFilter();location.reload();};
+      banner.appendChild(disBtn);
+    }
+    doFilter();
+  }
 });
 </script>
 </body>
